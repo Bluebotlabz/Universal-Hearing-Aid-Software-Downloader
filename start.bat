@@ -20,15 +20,21 @@ pip3 install -r ./requirements.txt
 echo.
 echo.
 
-echo Hearing Aid Software downloader
+echo ==================================================
+echo =         Hearing Aid Software downloader        =
+echo ========================================= v1.1.0 =
+echo.
+echo.
 echo 1) Phonak Target Downloader
 echo 2) Signia Connexx Downloader
+echo 3) Oticon Genie (2) Downloader
 
 echo.
 set /p SELECTION="Please choose a downloader to run (type the number you want): "
 
 IF %SELECTION%==1 ( python "./Phonak Target Downloader.py" & GOTO Finished )
 IF %SELECTION%==2 ( python "./Signia Connexx Downloader.py" & GOTO Finished )
+IF %SELECTION%==3 ( python "./Oticon Genie (2) Downloader.py" & GOTO Finished )
 
 echo Invalid selection made, please try again
 pause

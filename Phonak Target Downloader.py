@@ -4,16 +4,11 @@
 #                                                           #
 #############################################################
 import os
-import math
 import requests
+import libhearingdownloader
 import xml.etree.ElementTree as xml
-utilityVersion = "v1.0.0"
+utilityVersion = "v1.1.0"
 verboseDebug = False
-
-def addSlash (path):
-    if (path[-1] != "/"):
-        path += "/"
-    return path
 
 
 
@@ -36,25 +31,7 @@ disclaimer = [
     "This is an UNOFFICIAL downloader and use of the software downloaded using it may be limited"
 ]
 
-disclaimerWidth = 150
-print("\n\n")
-print ("="*disclaimerWidth)
-for line in disclaimer:
-
-    paddedLine = line
-    leftPad = (disclaimerWidth-len(paddedLine))/2
-    rightPad = (disclaimerWidth-len(paddedLine))/2
-
-    if (leftPad % 1 != 0):
-        leftPad = math.floor(leftPad) + 1
-        rightPad = math.floor(rightPad)
-    
-    leftPad = int(leftPad)
-    rightPad = int(rightPad)
-
-    print("=" + " "*(leftPad-1) + line + " "*(rightPad-1) + "=")
-print ("="*disclaimerWidth)
-input("Press enter to continue...")
+libhearingdownloader.printDisclaimer(disclaimer)
 print("\n\n")
 
 
@@ -74,34 +51,8 @@ validVersions = [
     ('manual', 'Manually specify a version (WARNING: ADVANCED USERS ONLY)')
 ]
 
-outputDir = ''
-while not outputDir:
-    outputDir = input("Enter an output directory: ")
-    if (input("Confirm download path (" + outputDir + ") [Y/n] ") == "n"):
-        outputDir = ''
-
-targetVersion = ''
-while not targetVersion:
-    print("\n\n")
-    versionIndex = 0
-    for version in validVersions:
-        print(str(versionIndex) + ". " + version[0] + "\t" + version[1])
-        versionIndex += 1
-    
-    try:
-        targetVersion = int(input("Please select a version: "))
-    except ValueError:
-        targetVersion = -1
-    
-    if (targetVersion >= 0 and targetVersion < len(validVersions)):
-        if (input("You have selected version (" + validVersions[targetVersion][0] + ") are you sure you want to download it? [Y/n] ") == "n"):
-            targetVersion = ''
-        else:
-            targetVersion = validVersions[targetVersion][0]
-    else:
-        print("The version you have selected is invalid.\nPlease try again.")
-        targetVersion = ''
-
+outputDir = libhearingdownloader.selectOutputFolder()
+targetVersion = validVersions[libhearingdownloader.selectTargetVersion(validVersions)][0]
 
 print("\n\n")
 
@@ -124,24 +75,17 @@ print ("Downloading directory index")
 filesToDownload = {}
 for child in data[0].find(xmlns + "ContentInfos"):
     # Construct paths
-    filesToDownload[(addSlash(outputDir) + child.find(xmlns + "Key").text).replace(latestVersion, targetVersion)] = (addSlash(phonakCDNPath) + addSlash(child.find(xmlns + "RemotePath").text) + child.find(xmlns + "Key").text).replace(latestVersion, targetVersion)
+    filesToDownload[(outputDir + child.find(xmlns + "Key").text).replace(latestVersion, targetVersion)] = (libhearingdownloader.normalizePath(phonakCDNPath) + libhearingdownloader.normalizePath(child.find(xmlns + "RemotePath").text) + child.find(xmlns + "Key").text).replace(latestVersion, targetVersion)
 
 # Download and save the files
 print("Downloading " + str(len(filesToDownload.keys())) + " files")
 currentFile = 1
 for fileToDownload in filesToDownload.keys():
-    os.makedirs('/'.join(fileToDownload.split("/")[:-1]), exist_ok=True) # Create path if it doesn't exist
-
     print("Downloading " + fileToDownload.split("/")[-1] + " (" + str(currentFile) + "/" + str(len(filesToDownload.keys())) + ")")
     if (verboseDebug):
         print(filesToDownload[fileToDownload])
-    fileData = requests.get(filesToDownload[fileToDownload]) # Get file
-    if (fileData.status_code != 404):
-        with open(fileToDownload, 'wb') as file: # Write file content
-            file.write(fileData.content)
-    else:
-        print("\n\nERROR: 404 File not found")
-        exit()
+
+    libhearingdownloader.downloadFile(filesToDownload[fileToDownload], fileToDownload)
 
     currentFile += 1
 
