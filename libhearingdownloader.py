@@ -32,24 +32,28 @@ def selectTargetVersion(validVersions):
     targetVersion = ''
     while not targetVersion:
         print("\n\n")
+        indexMap = {}
         versionIndex = 0
+        versionNumber = 0
         for version in validVersions:
             if (version[1] != "--"):
                 print(str(versionIndex) + ". " + version[0] + "\t" + version[1])
-                versionIndex += 1
+                indexMap[versionNumber] = versionIndex
+                versionNumber += 1
             else:
                 print(version[0])
+            versionIndex += 1
         
         try:
             targetVersion = int(input("Please select a version: "))
         except ValueError:
             targetVersion = -1
         
-        if (targetVersion >= 0 and targetVersion < len(validVersions)):
+        if (targetVersion >= 0 and targetVersion <= versionNumber):
             if (input("You have selected version (" + validVersions[targetVersion][0] + ") are you sure you want to download it? [Y/n] ") == "n"):
                 targetVersion = ''
             else:
-                return targetVersion
+                return indexMap[targetVersion]
         else:
             print("The version you have selected is invalid.\nPlease try again.")
             targetVersion = ''
