@@ -53,8 +53,10 @@ NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by 
 - Update Genie 2 downloader to also use updater
 - Fix bugs
 ### v1.5.0
-- Add OasisNXT downloader
+- Add OasisNXT Downloader
 - Fix bugs
+### v1.6.0
+- Add Rexton Connexx Downloader
 
 
 ## Copyright & DMCA
