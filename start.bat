@@ -23,13 +23,14 @@ echo.
 
 echo ==================================================
 echo =         Hearing Aid Software downloader        =
-echo ========================================= v1.2.0 =
+echo ========================================= v1.3.0 =
 echo.
 echo.
 echo 1) Phonak Target Downloader
 echo 2) Signia Connexx Downloader
-echo 3) Oticon Genie (2) Downloader
+echo 3) Oticon Genie & Oticon Genie 2 Downloader
 echo 4) Unitron TrueFit Downloader
+echo 5) Widex Compass Downloader Downloader
 
 echo.
 set /p SELECTION="Please choose a downloader to run (type the number you want): "
@@ -38,6 +39,7 @@ IF %SELECTION%==1 ( python "./Phonak Target Downloader.py" & GOTO Finished )
 IF %SELECTION%==2 ( python "./Signia Connexx Downloader.py" & GOTO Finished )
 IF %SELECTION%==3 ( python "./Oticon Genie (2) Downloader.py" & GOTO Finished )
 IF %SELECTION%==4 ( python "./Unitron TrueFit.py" & GOTO Finished )
+IF %SELECTION%==5 ( python "./Widex Compass Downloader.py" & GOTO Finished )
 
 echo Invalid selection made, please try again
 pause

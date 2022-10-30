@@ -5,7 +5,7 @@
 #############################################################
 import libhearingdownloader
 import xml.etree.ElementTree as xml
-utilityVersion = "v1.2.0"
+utilityVersion = "v1.3.0"
 verboseDebug = False
 
 
