@@ -48,6 +48,10 @@ NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by 
 - Reduce RAM usage when running the script
 ### v1.3.0
 - Add Widex Compass GPS downloader
+### v1.4.0
+- Split up the Genie downloaders into separate versions
+- Update Genie 2 downloader to also use updater
+- Fix bugs
 
 ## Copyright & DMCA
 Since these scripts download data which is publically available online directly from software servers, it does not directly distribute any copyrighted content<br>
