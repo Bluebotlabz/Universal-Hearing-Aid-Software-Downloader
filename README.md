@@ -11,6 +11,7 @@ The script currently supports:
 - Oticon Genie
 - Oticon Genie 2
 - Unitron TrueFit
+- Widex Compass GPS
 
 ## Where to get it
 The script is available here: https://github.com/Bluebotlabz/Hearing-Aid-Software-Downloaders/releases/latest
