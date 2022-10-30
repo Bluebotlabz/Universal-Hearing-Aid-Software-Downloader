@@ -51,7 +51,7 @@ NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by 
 
 ## Copyright & DMCA
 Since these scripts download data which is publically available online directly from software servers, it does not directly distribute any copyrighted content<br>
-If you are a company and are still unhappy with the way one of these scripts works, please open an issue describing how exactly the script violates your software's copyright and it will be made to comply immediately<br>
+If you are a company and are still unhappy with the way one of these scripts works, please open an issue describing how exactly the script violates your software's copyright and it will be modified immediately<br>
 
 ## DISCLAIMER
 I (Bluebotlabz), do not take any responsability for what you do using this software<br/>
