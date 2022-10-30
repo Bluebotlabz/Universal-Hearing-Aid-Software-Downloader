@@ -4,12 +4,49 @@ A collection of scripts which download hearing aid programming software directly
 ## What does it do?
 This repository contains scripts which can download hearing aid programming software (such as Phonak Target) directly from the software's servers, avoiding the need to distribute copyrighted files
 
-## How to use it
+## Currently Supported Software
+The script currently supports:
+- Phonak Target
+- Signia Connexx
+- Oticon Genie
+- Oticon Genie 2
+- Unitron TrueFit
+
+## Where to get it
+The script is available here: https://github.com/Bluebotlabz/Hearing-Aid-Software-Downloaders/releases/latest
+
 Note: You need to have the latest version of Python installed for this to work
-1. First scroll up, and click on the green `code` button, and then click on the `Download ZIP` button
-2. Extract the ZIP file
-3. Double click the `start.bat` file
-4. Follow the instructions in the terminal window
+## How To Use it
+1. Download the script from here: https://github.com/Bluebotlabz/Hearing-Aid-Software-Downloaders/releases/latest<br/>
+   Click on the link and then click on the `Hearing-Aid-Software-Downloaders.zip` link to download it
+2. Extract the ZIP to a folder
+3. Go to: https://www.python.org/downloads/
+4. Click on the yellow `Download Python` button and run the installer
+5. Make sure you select `Add python.exe to PATH` in the start of the installer, and then click on `Install Now`
+6. Now go back to the folder where you extracted the scripts (not the ZIP file, the extracted folder)
+7. Double-click the `start.bat` file and follow the instructions on-screen
+
+NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by running the `fixQuickedit.reg` file before running `start.bat`
+
+## Credits
+[@pvc](https://forum.hearingtracker.com/u/tenkan) - Assisting with testing of the script and finding software links
+
+[@tenkan](https://forum.hearingtracker.com/u/tenkan) - Finding the Genie (2) download page links
+
+## Changelog
+### v1.0.0
+- Add Phonak Target & Signia Connexx Downloaders
+- Release it publically
+### v1.1.0
+- Add Oticon Genie & Oticon Genie 2 Downloaders
+### v1.1.2
+- Fix bugs with selecting download version
+### v1.2.0
+- Add Unitron TrueFit downloader
+- Add progress bar to downloader
+- Reduce RAM usage when running the script
+### v1.3.0
+- Add Widex Compass GPS downloader
 
 ## Copyright & DMCA
 Since these scripts download data which is publically available online directly from software servers, it does not directly distribute any copyrighted content<br>
