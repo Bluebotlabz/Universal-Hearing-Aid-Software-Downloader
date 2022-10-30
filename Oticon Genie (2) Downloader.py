@@ -5,7 +5,7 @@
 #############################################################
 import libhearingdownloader
 import xml.etree.ElementTree as xml
-utilityVersion = "v1.1.2"
+utilityVersion = "v1.2.0"
 verboseDebug = False
 
 
@@ -19,12 +19,12 @@ disclaimer = [
     "",
     "I (Bluebotlabz), do not take any responsability for what you do using this software",
     "Oticon is a trademark of Oticon",
-    "Sonova is a trademark of Sonova AG",
-    "Oticon is a subsidiary of Sonova AG",
+    "Demant is a trademark of Demant A/S",
+    "Oticon is a subsidiary of Demant A/S",
     "Oticon Genie & Oticon Genie 2 are created by Oticon",
-    "All rights and credit go to their rightful owners. No copyright infringement intended."
+    "All rights and credit go to their rightful owners. No copyright infringement intended.",
     "",
-    "Bluebotlabz and this downloader are not affiliated with or endorsed by Oticon or Sonova AG",
+    "Bluebotlabz and this downloader are not affiliated with or endorsed by Oticon or Demant A/S",
     "Depending on how this software is used, it may breach the EULA of the downloaded software",
     "This is an UNOFFICIAL downloader and use of the software downloaded using it may be limited"
 ]
@@ -58,11 +58,7 @@ if(verboseDebug):
     print("V:" + str(targetVersion))
     print("T:" + validVersions[targetVersion])
 
-# Print download messages
-print("Downloading " + validVersions[targetVersion][0])
-print("This may take a while...")
-
 # Download the file
-libhearingdownloader.downloadFile(validVersions[targetVersion][2], outputDir + validVersions[targetVersion][2].split("/")[-1])
+libhearingdownloader.downloadFile(validVersions[targetVersion][2], outputDir + validVersions[targetVersion][2].split("/")[-1], "Downloading " + validVersions[targetVersion][0])
 
 print("\n\nDownload Complete!")

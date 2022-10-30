@@ -1,3 +1,5 @@
+from importlib_metadata import files
+from tqdm import tqdm
 import requests
 import math
 import os
@@ -16,10 +18,8 @@ def printDisclaimer(disclaimer):
     print("\n\n")
     print ("="*disclaimerWidth)
     for line in disclaimer:
-
-        paddedLine = line
-        leftPad = (disclaimerWidth-len(paddedLine))/2
-        rightPad = (disclaimerWidth-len(paddedLine))/2
+        leftPad = (disclaimerWidth-len(line))/2
+        rightPad = (disclaimerWidth-len(line))/2
 
         if (leftPad % 1 != 0):
             leftPad = math.floor(leftPad) + 1
@@ -77,12 +77,20 @@ def selectOutputFolder():
     
     return normalizePath(outputDir)
 
-def downloadFile(url, saveLocation):
+def downloadFile(url, saveLocation, downloadDescription):
     os.makedirs('/'.join(saveLocation.split("/")[:-1]), exist_ok=True) # Create path if it doesn't exist
-    fileData = requests.get(url) # Get file
-    if (fileData.status_code != 404):
-        with open(saveLocation, 'wb') as file: # Write file content
-            file.write(fileData.content)
+    fileData = requests.get(url, stream=True) # Get file stream
+
+    chunkSize = 2048
+
+    fileSize = int(fileData.headers['content-length'])
+    if (fileSize < chunkSize):
+        chunkSize = fileSize
+
+    if (fileData.status_code == 200):
+        with open(saveLocation, 'wb') as fd:
+            for chunk in tqdm(fileData.iter_content(chunk_size=chunkSize), desc=downloadDescription, total=int(int(fileData.headers['content-length'])/chunkSize), unit="B", unit_scale=chunkSize):
+                fd.write(chunk)
     else:
-        print("\n\nERROR: 404 File not found")
+        print("\n\nERROR: " + str(fileData.status_code))
         exit(1)
