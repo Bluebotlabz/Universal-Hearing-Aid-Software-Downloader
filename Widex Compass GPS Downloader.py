@@ -9,7 +9,7 @@ import zipfile
 import requests
 import libhearingdownloader
 import xml.etree.ElementTree as xml
-utilityVersion = "v1.4.0"
+utilityVersion = "v1.5.0"
 verboseDebug = False
 
     

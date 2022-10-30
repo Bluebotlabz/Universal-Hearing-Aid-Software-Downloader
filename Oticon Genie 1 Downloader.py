@@ -5,23 +5,23 @@
 #############################################################
 import libhearingdownloader
 import xml.etree.ElementTree as xml
-utilityVersion = "v1.4.0"
+utilityVersion = "v1.5.0"
 verboseDebug = False
 
 
 
 print("==================================================")
-print("=           Oticon Genie (2) Downloader          =")
+print("=            Oticon Genie 1 Downloader           =")
 print("="*(47-len(utilityVersion)) + " " + utilityVersion + " =")
 
 disclaimer = [
     "DISCLAIMER",
     "",
     "I (Bluebotlabz), do not take any responsability for what you do using this software",
-    "Oticon is a trademark of Oticon",
+    "Oticon is a trademark of Oticon A/S",
     "Demant is a trademark of Demant A/S",
     "Oticon is a subsidiary of Demant A/S",
-    "Oticon Genie & Oticon Genie 2 are created by Oticon",
+    "Oticon Genie/Oticon Genie 1 is created by Oticon A/S",
     "All rights and credit go to their rightful owners. No copyright infringement intended.",
     "",
     "Bluebotlabz and this downloader are not affiliated with or endorsed by Oticon or Demant A/S",

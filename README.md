@@ -52,6 +52,10 @@ NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by 
 - Split up the Genie downloaders into separate versions
 - Update Genie 2 downloader to also use updater
 - Fix bugs
+### v1.5.0
+- Add OasisNXT downloader
+- Fix bugs
+
 
 ## Copyright & DMCA
 Since these scripts download data which is publically available online directly from software servers, it does not directly distribute any copyrighted content<br>
