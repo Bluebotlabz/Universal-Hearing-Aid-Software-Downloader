@@ -1,4 +1,4 @@
-# Hearing-Aid-Software-Downloaders
+# Universal Hearing Aid Software Downloader
 A collection of scripts which download hearing aid programming software directly from the company's servers
 
 ## What does it do?
