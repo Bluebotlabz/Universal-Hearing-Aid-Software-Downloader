@@ -5,7 +5,7 @@
 #############################################################
 import libhearingdownloader
 import xml.etree.ElementTree as xml
-utilityVersion = "v1.3.0"
+utilityVersion = "v1.4.0"
 verboseDebug = False
 
 
@@ -35,15 +35,9 @@ libhearingdownloader.printDisclaimer(disclaimer)
 
 # Define list of valid versions and their download links (direct from CDN)
 validVersions = [
-    ("Online Installers (shorter downloads, but they require an internet connection to install)", "--"),
-    ("Genie 2 2022.1.0", "The latest Genie 2 2022.1.0 Installer", "https://installcdn.oticon.com/22.1/15.19.13.0/Genie/Oticon/47b1876d/setup.exe"),
-    ("Genie 2 2020.1", "The Genie 2 2020.1 Installer", "https://installcdn.oticon.com/20.1/9.3.116.0/Genie/Oticon/9fc0827f/setup.exe"),
+    ("Online Installers (require an internet connection to install)", "--"),
     ("Genie 2017.1", "The last Genie 1 2017 Version", "https://installcdn.oticon.com/full/17.1/27.0.40.29/OTG214672OT_USB.zip"),
     ("Genie Medical 2016.1", "The old Genie 1 2016 Version", "https://wdh02.azureedge.net/-/media/oticon-us/main/client-systems-support-and-remote-assistance/geniemedical2016.exe?la=en&rev=171A&hash=95AF6010585FD97B23A9FAB05FBAE761"),
-    ("", "--"),
-    ("Offline Installers (longer downloads, but they work without an internet connection to install)", "--"),
-    ("Genie 2 2022.1.0", "The latest Genie 2 2022.1.0 Installer (OFFLINE INSTALLER)", "https://installcdn.oticon.com/full/22.1/15.19.13.0/OTG22_1237118OT_USB.zip"),
-    ("Genie 2 2020.1", "The Genie 2 2020.1 Installer (OFFLINE INSTALLER)", "https://installcdn.oticon.com/full/20.1/9.3.116.0/OTG20_1214671OT_USB.zip")
 ]
 
 # Select outputDir and targetVersion
@@ -52,7 +46,7 @@ targetVersion = libhearingdownloader.selectTargetVersion(validVersions)
 print("\n\n")
 
 # Create download folder
-outputDir += '.'.join(validVersions[targetVersion][0].split('.')[:-1]) + "/"
+outputDir += validVersions[targetVersion][0] + "/"
 
 if(verboseDebug):
     print("V:" + str(targetVersion))

@@ -11,7 +11,7 @@ import os
 def normalizePath(path):
     if (path[-1] != "/"):
         path += "/"
-    return path
+    return (path.replace("|", "-").replace("<", "-").replace(">", "-").replace(":", "-").replace('"', "-").replace("?", "-").replace("*", "-"))
 
 def printDisclaimer(disclaimer):
     disclaimerWidth = 150
@@ -82,9 +82,9 @@ def downloadFile(url, saveLocation, downloadDescription):
     fileData = requests.get(url, stream=True) # Get file stream
 
     chunkSize = 2048
-
+    
     fileSize = int(fileData.headers['content-length'])
-    if (fileSize < chunkSize):
+    if (fileSize < chunkSize and fileSize > 0):
         chunkSize = fileSize
 
     if (fileData.status_code == 200):
