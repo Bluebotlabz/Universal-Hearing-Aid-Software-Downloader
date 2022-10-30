@@ -28,35 +28,36 @@ def printDisclaimer(disclaimer):
     print ("="*disclaimerWidth)
     input("Press enter to continue...")
 
-def selectTargetVersion(validVersions):
-    targetVersion = ''
-    while not targetVersion:
+def selecttargetIndex(validVersions):
+    targetIndex = ''
+    while not targetIndex:
         print("\n\n")
-        indexMap = {}
-        versionIndex = 0
-        versionNumber = 0
+        indexMap = {} # Map version numbers to list index
+        listIndex = 0 # The current index in the list
+        selectionNumber = 0 # The current DISPLAYED index in the list
+
         for version in validVersions:
             if (version[1] != "--"):
-                print(str(versionIndex) + ". " + version[0] + "\t" + version[1])
-                indexMap[versionNumber] = versionIndex
-                versionNumber += 1
+                print(str(selectionNumber) + ". " + version[0] + "\t" + version[1])
+                indexMap[selectionNumber] = listIndex
+                selectionNumber += 1 # Increment displayed index
             else:
-                print(version[0])
-            versionIndex += 1
+                print(version[0]) # Header
+            listIndex += 1 # Increment list index
         
         try:
-            targetVersion = int(input("Please select a version: "))
+            targetIndex = int(input("Please select a version: "))
         except ValueError:
-            targetVersion = -1
+            targetIndex = -1
         
-        if (targetVersion >= 0 and targetVersion <= versionNumber):
-            if (input("You have selected version (" + validVersions[targetVersion][0] + ") are you sure you want to download it? [Y/n] ") == "n"):
-                targetVersion = ''
+        if (targetIndex >= 0 and targetIndex <= selectionNumber):
+            if (input("You have selected version (" + validVersions[indexMap[targetIndex]][0] + ") are you sure you want to download it? [Y/n] ") == "n"):
+                targetIndex = ''
             else:
-                return indexMap[targetVersion]
+                return indexMap[targetIndex]
         else:
             print("The version you have selected is invalid.\nPlease try again.")
-            targetVersion = ''
+            targetIndex = ''
 
 def selectOutputFolder():
     outputDir = ''

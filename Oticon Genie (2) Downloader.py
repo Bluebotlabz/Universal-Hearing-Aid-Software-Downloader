@@ -7,7 +7,7 @@ import os
 import requests
 import libhearingdownloader
 import xml.etree.ElementTree as xml
-utilityVersion = "v1.1.0"
+utilityVersion = "v1.1.2"
 verboseDebug = False
 
 
@@ -51,6 +51,10 @@ validVersions = [
 outputDir = libhearingdownloader.selectOutputFolder()
 targetVersion = libhearingdownloader.selectTargetVersion(validVersions)
 print("\n\n")
+
+if(verboseDebug):
+    print("V:" + str(targetVersion))
+    print("T:" + validVersions[targetVersion])
 
 # Download and save the files
 print("Downloading " + validVersions[targetVersion][0])
