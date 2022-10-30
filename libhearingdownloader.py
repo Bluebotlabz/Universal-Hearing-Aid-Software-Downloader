@@ -2,6 +2,10 @@ import requests
 import math
 import os
 
+###
+# libhearingdownloader - A useful library for the downloader scripts
+###
+
 def normalizePath(path):
     if (path[-1] != "/"):
         path += "/"
@@ -28,7 +32,7 @@ def printDisclaimer(disclaimer):
     print ("="*disclaimerWidth)
     input("Press enter to continue...")
 
-def selecttargetIndex(validVersions):
+def selectTargetVersion(validVersions):
     targetIndex = ''
     while not targetIndex:
         print("\n\n")
@@ -62,11 +66,16 @@ def selecttargetIndex(validVersions):
 def selectOutputFolder():
     outputDir = ''
     while not outputDir:
-        outputDir = normalizePath(input("Enter an output directory: "))
-        if (input("Confirm download path (" + outputDir + ") [Y/n] ") == "n"):
+        print("\n\n")
+        outputDir = input("Enter an output directory: ")
+        if (outputDir != ""):
+            if (input("Confirm download path (" + normalizePath(outputDir) + ") [Y/n] ") == "n"):
+                outputDir = ''
+        else:
+            print("The directory you have selected is invalid.\nPlease try again.")
             outputDir = ''
     
-    return outputDir
+    return normalizePath(outputDir)
 
 def downloadFile(url, saveLocation):
     os.makedirs('/'.join(saveLocation.split("/")[:-1]), exist_ok=True) # Create path if it doesn't exist
@@ -76,4 +85,4 @@ def downloadFile(url, saveLocation):
             file.write(fileData.content)
     else:
         print("\n\nERROR: 404 File not found")
-        exit()
+        exit(1)

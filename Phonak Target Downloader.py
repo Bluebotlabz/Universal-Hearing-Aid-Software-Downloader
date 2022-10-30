@@ -3,7 +3,6 @@
 #                   Copyright Bluebotlabz                   #
 #                                                           #
 #############################################################
-import os
 import requests
 import libhearingdownloader
 import xml.etree.ElementTree as xml
@@ -31,31 +30,35 @@ disclaimer = [
     "This is an UNOFFICIAL downloader and use of the software downloaded using it may be limited"
 ]
 
+# Display disclaimer
 libhearingdownloader.printDisclaimer(disclaimer)
 print("\n\n")
 
 
 
 print("Fetching Data...")
-xmlns = "{http://cocoon.phonak.com}"
-xmlData = requests.get("https://p-svc1.phonakpro.com/1/ObjectLocationService.svc/FittingApplicationInstaller/index?appName=Phonak%20Target&appVer=6.0.1.695&dist=Phonak&country=GB&subKeys=").text
+xmlns = "{http://cocoon.phonak.com}" # Define the xmlns
+xmlData = requests.get("https://p-svc1.phonakpro.com/1/ObjectLocationService.svc/FittingApplicationInstaller/index?appName=Phonak%20Target&appVer=6.0.1.695&dist=Phonak&country=GB&subKeys=").text # Request the updater API (spoof older version to get whole installer files rather than "patch" installers)
 data = xml.fromstring(xmlData)
 
 # Get latest version number (Gets full version from xml and removes the fourth version number as that is not used in files)
 latestVersion = '.'.join((data[0].find(xmlns + "UpdateVersion").find(xmlns + "Version").text).split(".")[:-1])
 
-print("\n\n")
+
+# List of versions
 validVersions = [
     (latestVersion, 'The latest available Phonak Target verion'),
 #    ('6.2.8', 'The last version of Phonak Target compatible with the iCube (obsolete proprietary hearing aid programmer)'),
     ('manual', 'Manually specify a version (WARNING: ADVANCED USERS ONLY)')
 ]
 
+# Select outputDir and targetVersion
 outputDir = libhearingdownloader.selectOutputFolder()
 targetVersion = validVersions[libhearingdownloader.selectTargetVersion(validVersions)][0]
-
 print("\n\n")
 
+
+# Logic for "special" versions
 if (targetVersion == 'latest'):
     targetVersion = latestVersion
 elif (targetVersion == 'manual'):
@@ -67,10 +70,13 @@ elif (targetVersion == 'manual'):
         elif (input("You have selected version (" + targetVersion + ") are you sure you want to download it? [Y/n] ") == "n"):
             targetVersion = ''
 
+# Create download folder
+outputDir += targetVersion + "/"
+
 # Get CDN/Download location
 phonakCDNPath = data[0].find(xmlns + "Location").text
 
-# Download "filelist" and update metadata
+# Get list of files to download for a specified version from the XML data
 print ("Downloading directory index")
 filesToDownload = {}
 for child in data[0].find(xmlns + "ContentInfos"):
@@ -85,6 +91,7 @@ for fileToDownload in filesToDownload.keys():
     if (verboseDebug):
         print(filesToDownload[fileToDownload])
 
+    # Download file
     libhearingdownloader.downloadFile(filesToDownload[fileToDownload], fileToDownload)
 
     currentFile += 1

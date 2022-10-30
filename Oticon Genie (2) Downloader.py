@@ -3,8 +3,6 @@
 #                   Copyright Bluebotlabz                   #
 #                                                           #
 #############################################################
-import os
-import requests
 import libhearingdownloader
 import xml.etree.ElementTree as xml
 utilityVersion = "v1.1.2"
@@ -31,11 +29,11 @@ disclaimer = [
     "This is an UNOFFICIAL downloader and use of the software downloaded using it may be limited"
 ]
 
+# Display disclaimer
 libhearingdownloader.printDisclaimer(disclaimer)
-print("\n\n")
 
 
-
+# Define list of valid versions and their download links (direct from CDN)
 validVersions = [
     ("Online Installers (shorter downloads, but they require an internet connection to install)", "--"),
     ("Genie 2 2022.1.0", "The latest Genie 2 2022.1.0 Installer", "https://installcdn.oticon.com/22.1/15.19.13.0/Genie/Oticon/47b1876d/setup.exe"),
@@ -48,18 +46,23 @@ validVersions = [
     ("Genie 2 2020.1", "The Genie 2 2020.1 Installer (OFFLINE INSTALLER)", "https://installcdn.oticon.com/full/20.1/9.3.116.0/OTG20_1214671OT_USB.zip")
 ]
 
+# Select outputDir and targetVersion
 outputDir = libhearingdownloader.selectOutputFolder()
 targetVersion = libhearingdownloader.selectTargetVersion(validVersions)
 print("\n\n")
+
+# Create download folder
+outputDir += '.'.join(validVersions[targetVersion][0].split('.')[:-1]) + "/"
 
 if(verboseDebug):
     print("V:" + str(targetVersion))
     print("T:" + validVersions[targetVersion])
 
-# Download and save the files
+# Print download messages
 print("Downloading " + validVersions[targetVersion][0])
 print("This may take a while...")
 
+# Download the file
 libhearingdownloader.downloadFile(validVersions[targetVersion][2], outputDir + validVersions[targetVersion][2].split("/")[-1])
 
 print("\n\nDownload Complete!")
