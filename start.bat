@@ -39,7 +39,7 @@ IF %SELECTION%==1 ( python "./Phonak Target Downloader.py" & GOTO Finished )
 IF %SELECTION%==2 ( python "./Signia Connexx Downloader.py" & GOTO Finished )
 IF %SELECTION%==3 ( python "./Oticon Genie (2) Downloader.py" & GOTO Finished )
 IF %SELECTION%==4 ( python "./Unitron TrueFit.py" & GOTO Finished )
-IF %SELECTION%==5 ( python "./Widex Compass Downloader.py" & GOTO Finished )
+IF %SELECTION%==5 ( python "./Widex Compass GPS Downloader.py" & GOTO Finished )
 
 echo Invalid selection made, please try again
 pause
