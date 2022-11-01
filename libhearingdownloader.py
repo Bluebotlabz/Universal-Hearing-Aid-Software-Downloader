@@ -8,10 +8,14 @@ import os
 # libhearingdownloader - A useful library for the downloader scripts
 ###
 
-def normalizePath(path):
+def normalizePath(path, correctWindowsChars=True):
     if (path[-1] != "/"):
         path += "/"
-    return (path.replace("|", "-").replace("<", "-").replace(">", "-").replace(":", "-").replace('"', "-").replace("?", "-").replace("*", "-"))
+
+    if (correctWindowsChars):
+        return (path.replace("|", "-").replace("<", "-").replace(">", "-").replace(":", "-").replace('"', "-").replace("?", "-").replace("*", "-"))
+    else:
+        return path
 
 def printDisclaimer(disclaimer):
     disclaimerWidth = 150

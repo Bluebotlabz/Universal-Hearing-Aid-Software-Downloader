@@ -21,8 +21,8 @@ echo.
 echo.
 
 echo ==================================================
-echo =         Hearing Aid Software downloader        =
-echo ========================================= v1.6.0 =
+echo =    Universal Hearing Aid Software Downloader   =
+echo ========================================= v1.6.1 =
 echo.
 echo.
 echo 1) Phonak Target Downloader

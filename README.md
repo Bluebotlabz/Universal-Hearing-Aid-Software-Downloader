@@ -57,6 +57,9 @@ NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by 
 - Fix bugs
 ### v1.6.0
 - Add Rexton Connexx Downloader
+### v1.6.1
+- Fix Phonak Target Downloader Bug
+- Fix script name mistake
 
 
 ## Copyright & DMCA
