@@ -2,7 +2,8 @@
 A collection of scripts which download hearing aid programming software directly from the company's servers
 
 ## What does it do?
-This repository contains scripts which can download hearing aid programming software (such as Phonak Target) directly from the software's servers, avoiding the need to distribute copyrighted files
+This repository contains scripts which can download hearing aid programming software (such as Phonak Target) directly from the software's servers, avoiding the need to distribute copyrighted files<br/>
+(I am not a lawyer, this is not legal advice, this is my merely opinion)
 
 ## Currently Supported Software
 The script currently supports:
@@ -67,6 +68,7 @@ NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by 
 ## Copyright & DMCA
 Since these scripts download data which is publically available online directly from software servers, it does not directly distribute any copyrighted content<br>
 If you are a company and are still unhappy with the way one of these scripts works, please open an issue describing how exactly the script violates your software's copyright and it will be modified immediately<br>
+(I am not a lawyer, this is not legal advice, this is my merely opinion)
 
 ## DISCLAIMER
 I (Bluebotlabz), do not take any responsability for what you do using this software<br/>
@@ -75,3 +77,4 @@ All rights and credit go to their rightful owners. No copyright infringement int
 Bluebotlabz and this downloader are not affiliated with or endorsed by any of the companies mentioned in this repository<br/>
 Depending on how this software is used, it may breach the EULA of the downloaded software<br/>
 This is an UNOFFICIAL downloader and use of the software downloaded using it may be limited<br/>
+(I am not a lawyer, this is not legal advice, this is my merely opinion)
