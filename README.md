@@ -9,10 +9,12 @@ This repository contains scripts which can download hearing aid programming soft
 The script currently supports:
 - Phonak Target
 - Signia Connexx
-- Oticon Genie
+- Rexton Connexx
+- Oticon Genie 1
 - Oticon Genie 2
 - Unitron TrueFit
 - Widex Compass GPS
+- Bernafon OasisNXT
 
 ## Where to get it
 The script is available here: https://github.com/Bluebotlabz/Hearing-Aid-Software-Downloaders/releases/latest
