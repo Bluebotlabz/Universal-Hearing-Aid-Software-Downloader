@@ -60,6 +60,8 @@ NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by 
 ### v1.6.1
 - Fix Phonak Target Downloader Bug
 - Fix script name mistake
+### v1.6.2
+- Fix Unitron Downloader Bug
 
 
 ## Copyright & DMCA

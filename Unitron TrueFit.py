@@ -6,7 +6,7 @@
 import requests
 import libhearingdownloader
 import xml.etree.ElementTree as xml
-utilityVersion = "v1.6.1"
+utilityVersion = "v1.6.2"
 verboseDebug = False
 
 
@@ -81,7 +81,7 @@ print ("Downloading directory index")
 filesToDownload = {}
 for child in data[0].find(xmlns + "ContentInfos"):
     # Construct paths
-    filesToDownload[(outputDir + child.find(xmlns + "Key").text).replace(latestVersion, targetVersion)] = (libhearingdownloader.normalizePath(unitronCDNPath) + libhearingdownloader.normalizePath(child.find(xmlns + "RemotePath").text) + child.find(xmlns + "Key").text).replace(latestVersion, targetVersion)
+    filesToDownload[(outputDir + child.find(xmlns + "Key").text).replace(latestVersion, targetVersion)] = (libhearingdownloader.normalizePath(unitronCDNPath, False) + libhearingdownloader.normalizePath(child.find(xmlns + "RemotePath").text, False) + child.find(xmlns + "Key").text).replace(latestVersion, targetVersion)
 
 # Download and save the files
 print("Downloading " + str(len(filesToDownload.keys())) + " files\n")
