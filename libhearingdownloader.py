@@ -73,13 +73,13 @@ def selectOutputFolder():
         print("\n\n")
         outputDir = input("Enter an output directory: ")
         if (outputDir != ""):
-            if (input("Confirm download path (" + normalizePath(outputDir) + ") [Y/n] ") == "n"):
+            if (input("Confirm download path (" + normalizePath(outputDir, False) + ") [Y/n] ") == "n"):
                 outputDir = ''
         else:
             print("The directory you have selected is invalid.\nPlease try again.")
             outputDir = ''
     
-    return normalizePath(outputDir)
+    return normalizePath(outputDir, False)
 
 def downloadFile(url, saveLocation, downloadDescription):
     os.makedirs('/'.join(saveLocation.split("/")[:-1]), exist_ok=True) # Create path if it doesn't exist
