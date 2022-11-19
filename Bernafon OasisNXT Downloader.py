@@ -7,7 +7,7 @@ import html
 import requests
 import libhearingdownloader
 import xml.etree.ElementTree as xml
-utilityVersion = "v1.6.2"
+utilityVersion = "v1.6.3"
 verboseDebug = False
 
 

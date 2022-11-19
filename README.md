@@ -65,6 +65,8 @@ NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by 
 - Fix script name mistake
 ### v1.6.2
 - Fix Unitron Downloader Bug
+### v1.6.3
+- Fix folder path selection bug
 
 
 ## Copyright & DMCA
