@@ -1,6 +1,17 @@
 from tqdm import tqdm
 import requests
-import wx
+
+try:
+    import wx
+    guiType = "wxpython"
+except:
+    try:
+        from tkinter import filedialog as tkfiledialog
+        from tkinter import Tk
+        guiType = "tkinter"
+    except:
+        guiType = None
+
 import time
 import math
 import os
@@ -10,7 +21,7 @@ import os
 # libhearingdownloader - A useful library for the downloader scripts
 ###
 
-downloaderVersion = "v1.7.0 - BETA"
+downloaderVersion = "v1.7.0 - BETA2"
 updaterRetries = 3
 verboseDebug = False
 
@@ -74,34 +85,53 @@ def selectTargetVersion(validVersions, prompt = "version", headerSeperator=''):
             targetIndex = ''
 
 def selectOutputFolder():
-    print("Please select a download location")
-    time.sleep(2)
+    if (guiType == "wx"):
+        print("Please select a download location")
+        time.sleep(2)
 
-    wxApp = wx.App(redirect=False, useBestVisual=True, clearSigInt=True)
-    wxDirDialog = wx.DirDialog(None, "Choose a download folder", "")
-    dialogReturn = wxDirDialog.ShowModal()
-    #outputDir = filedialog.askdirectory(title="Choose a download folder")
+        wxApp = wx.App(redirect=False, useBestVisual=True, clearSigInt=True)
+        wxDirDialog = wx.DirDialog(None, "Choose a download folder", "")
+        dialogReturn = wxDirDialog.ShowModal()
 
-    if (dialogReturn == wx.ID_CANCEL):
-        print("No valid directory selected, exiting")
-        exit()
-    else:
-        outputDir = wxDirDialog.GetPath()
+        if (dialogReturn == wx.ID_CANCEL):
+            print("No valid directory selected, exiting")
+            exit()
+        else:
+            outputDir = wxDirDialog.GetPath()
 
-    wxApp.Destroy()
-    
-    ## outputDir = ''
-    ## while not outputDir:
-    ##     print("\n\n")
-    ##     outputDir = input("Enter an output directory: ")
-    ##     if (outputDir != ""):
-    ##         if (input("Confirm download path (" + normalizePath(outputDir, False) + ") [Y/n] ") == "n"):
-    ##             outputDir = ''
-    ##     else:
-    ##         print("The directory you have selected is invalid.\nPlease try again.")
-    ##         outputDir = ''
+        wxApp.Destroy()
+    elif (guiType == "tkinter"):
+        print("Please select a download location")
+        time.sleep(2)
+
+        tkRoot = Tk()
+        tkRoot.withdraw()
+        tkRoot.focus()
+        tkRoot.focus_force()
+        tkRoot.wm_attributes('-topmost', True)
+
+        outputDir = tkfiledialog.askdirectory( parent=tkRoot, title="Choose a download folder")
+        if (not outputDir):
+            print("No valid directory selected, exiting")
+            exit()
+
+        tkRoot.destroy()
+
+    if (guiType == None):
+        outputDir = ''
+        while not outputDir:
+            print("\n\n")
+            outputDir = input("Enter an output directory: ")
+            if (outputDir != ""):
+                if (input("Confirm download path (" + normalizePath(outputDir, False) + ") [Y/n] ") == "n"):
+                    outputDir = ''
+            else:
+                print("The directory you have selected is invalid.\nPlease try again.")
+                outputDir = ''
     
     return normalizePath(outputDir, False)
+
+print(selectOutputFolder())
 
 def downloadFile(url, saveLocation, downloadDescription):
     os.makedirs('/'.join(saveLocation.split("/")[:-1]), exist_ok=True) # Create path if it doesn't exist
