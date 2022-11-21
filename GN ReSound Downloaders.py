@@ -55,7 +55,7 @@ for child in data:
     if (child[0].tag == "SEPARATOR"):
         availableFiles.append( ("== " + child[0].text + " ==", '--') )
     else:
-        availableFiles.append( (child.find("BUTTONTEXTDOWN").text, child.find("LINK").text) )
+        availableFiles.append( (child.find("BUTTONTEXTDOWN").text, '', child.find("LINK").text) )
 
 if (libhearingdownloader.verboseDebug):
     print(availableFiles)
@@ -67,14 +67,14 @@ targetFile = availableFiles[libhearingdownloader.selectTargetVersion(availableFi
 if (libhearingdownloader.verboseDebug):
     print(targetFile)
 
-targetURL = targetFile[1]
+targetURL = targetFile[2]
 
 if (not ("http://" in targetURL or "https://" in targetURL)):
     targetURL = "http://www.supportgn.com/files/" + targetURL
 
 # Create download folder
 #outputDir += '.'.join(targetFile[0].split('.')[:-1]) + "/"
-outputLocation = outputDir + '.'.join(targetFile[1].split("/")[-1].split(".")[:-1]) + "/" + targetFile[1].split("/")[-1]
+outputLocation = outputDir + '.'.join(targetFile[2].split("/")[-1].split(".")[:-1]) + "/" + targetFile[2].split("/")[-1]
 print("\n\n")
 
 # Download file
