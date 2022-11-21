@@ -1,3 +1,4 @@
 requests
 tqdm
 importlib-metadata
+wxPython

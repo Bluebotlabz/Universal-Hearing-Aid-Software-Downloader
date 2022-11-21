@@ -1,6 +1,7 @@
 from importlib_metadata import files
 from tqdm import tqdm
-import requests
+import wx
+import time
 import math
 import os
 
@@ -68,16 +69,32 @@ def selectTargetVersion(validVersions):
             targetIndex = ''
 
 def selectOutputFolder():
-    outputDir = ''
-    while not outputDir:
-        print("\n\n")
-        outputDir = input("Enter an output directory: ")
-        if (outputDir != ""):
-            if (input("Confirm download path (" + normalizePath(outputDir, False) + ") [Y/n] ") == "n"):
-                outputDir = ''
-        else:
-            print("The directory you have selected is invalid.\nPlease try again.")
-            outputDir = ''
+    print("Please select a download location")
+    time.sleep(2)
+
+    wxApp = wx.App(redirect=False, useBestVisual=True, clearSigInt=True)
+    wxDirDialog = wx.DirDialog(None, "Choose a download folder", "")
+    dialogReturn = wxDirDialog.ShowModal()
+    #outputDir = filedialog.askdirectory(title="Choose a download folder")
+
+    if (dialogReturn == wx.ID_CANCEL):
+        print("No valid directory selected, exiting")
+        exit()
+    else:
+        outputDir = wxDirDialog.GetPath()
+
+    wxApp.Destroy()
+    
+    ## outputDir = ''
+    ## while not outputDir:
+    ##     print("\n\n")
+    ##     outputDir = input("Enter an output directory: ")
+    ##     if (outputDir != ""):
+    ##         if (input("Confirm download path (" + normalizePath(outputDir, False) + ") [Y/n] ") == "n"):
+    ##             outputDir = ''
+    ##     else:
+    ##         print("The directory you have selected is invalid.\nPlease try again.")
+    ##         outputDir = ''
     
     return normalizePath(outputDir, False)
 
