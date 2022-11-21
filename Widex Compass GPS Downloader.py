@@ -42,10 +42,21 @@ headers = {
     "Content-Type": "text/xml; charset=utf-8"
 }
 
-# Download update file list from updater API
-rawXmlData = requests.post("http://widexautomaticupdate.cloudapp.net/UpdateService.svc", headers=headers, data='<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><CheckForUpdates xmlns="http://tempuri.org/"><statusDescriptor xmlns:a="http://schemas.datacontract.org/2004/07/Widex.AutomaticUpdate.UpdateService" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><a:ClientId>00000000-0000-0000-0000-000000000000</a:ClientId><a:DistributorCode>70039</a:DistributorCode><a:ProductStatusDescriptors><a:ProductStatusDescriptor><a:PackageStatusDescriptors><a:PackageStatusDescriptor><a:PackageName>Code</a:PackageName><a:PackageVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:PackageVersion></a:PackageStatusDescriptor><a:PackageStatusDescriptor><a:PackageName>en-GB</a:PackageName><a:PackageVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:PackageVersion></a:PackageStatusDescriptor><a:PackageStatusDescriptor><a:PackageName>Compass</a:PackageName><a:PackageVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:PackageVersion></a:PackageStatusDescriptor></a:PackageStatusDescriptors><a:ProductIdentifier>CompassGPS</a:ProductIdentifier><a:ProductName>COMPASS GPS</a:ProductName><a:ProductVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:ProductVersion></a:ProductStatusDescriptor></a:ProductStatusDescriptors></statusDescriptor></CheckForUpdates></s:Body></s:Envelope>')
-data = xml.fromstring(rawXmlData.text)
+updaterRetries = libhearingdownloader.updaterRetries
+while updaterRetries > 0:
+    try:
+        # Download update file list from updater API
+        rawXmlData = requests.post("http://widexautomaticupdate.cloudapp.net/UpdateService.svc", headers=headers, data='<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><CheckForUpdates xmlns="http://tempuri.org/"><statusDescriptor xmlns:a="http://schemas.datacontract.org/2004/07/Widex.AutomaticUpdate.UpdateService" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><a:ClientId>00000000-0000-0000-0000-000000000000</a:ClientId><a:DistributorCode>70039</a:DistributorCode><a:ProductStatusDescriptors><a:ProductStatusDescriptor><a:PackageStatusDescriptors><a:PackageStatusDescriptor><a:PackageName>Code</a:PackageName><a:PackageVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:PackageVersion></a:PackageStatusDescriptor><a:PackageStatusDescriptor><a:PackageName>en-GB</a:PackageName><a:PackageVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:PackageVersion></a:PackageStatusDescriptor><a:PackageStatusDescriptor><a:PackageName>Compass</a:PackageName><a:PackageVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:PackageVersion></a:PackageStatusDescriptor></a:PackageStatusDescriptors><a:ProductIdentifier>CompassGPS</a:ProductIdentifier><a:ProductName>COMPASS GPS</a:ProductName><a:ProductVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:ProductVersion></a:ProductStatusDescriptor></a:ProductStatusDescriptors></statusDescriptor></CheckForUpdates></s:Body></s:Envelope>')
+        data = xml.fromstring(rawXmlData.text)
+        break
+    except:
+        pass
 
+    updaterRetries -= 1
+if (updaterRetries == 0):
+    print("Error: Update server could not be reached")
+    exit(1)
+    
 if (libhearingdownloader.verboseDebug):
     print(rawXmlData.text)
 

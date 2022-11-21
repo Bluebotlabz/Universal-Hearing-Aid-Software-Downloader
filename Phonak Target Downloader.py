@@ -36,9 +36,21 @@ print("\n\n")
 
 print("Fetching Data...")
 xmlns = "{http://cocoon.phonak.com}" # Define the xmlns
-xmlData = requests.get("https://p-svc1.phonakpro.com/1/ObjectLocationService.svc/FittingApplicationInstaller/index?appName=Phonak%20Target&appVer=6.0.1.695&dist=Phonak&country=GB&subKeys=").text # Request the updater API (spoof older version to get whole installer files rather than "patch" installers)
-data = xml.fromstring(xmlData)
 
+updaterRetries = libhearingdownloader.updaterRetries
+while updaterRetries > 0:
+    try:
+        xmlData = requests.get("https://p-svc1.phonakpro.com/1/ObjectLocationService.svc/FittingApplicationInstaller/index?appName=Phonak%20Target&appVer=6.0.1.695&dist=Phonak&country=GB&subKeys=").text # Request the updater API (spoof older version to get whole installer files rather than "patch" installers)
+        data = xml.fromstring(xmlData)
+        break
+    except:
+        pass
+
+    updaterRetries -= 1
+if (updaterRetries == 0):
+    print("Error: Update server could not be reached")
+    exit(1)
+    
 # Get latest version number (Gets full version from xml and removes the fourth version number as that is not used in files)
 latestVersion = '.'.join((data[0].find(xmlns + "UpdateVersion").find(xmlns + "Version").text).split(".")[:-1])
 

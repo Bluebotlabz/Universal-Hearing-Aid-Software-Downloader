@@ -11,6 +11,7 @@ import os
 ###
 
 downloaderVersion = "v1.7.0 - BETA"
+updaterRetries = 3
 verboseDebug = False
 
 def normalizePath(path, correctWindowsChars=True):

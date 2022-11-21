@@ -10,7 +10,7 @@ import xml.etree.ElementTree as xml
     
 
 print("==================================================")
-print("=           ReSound Sofware Downloader            =")
+print("=           ReSound Software Downloader          =")
 print("="*(47-len(libhearingdownloader.downloaderVersion)) + " " + libhearingdownloader.downloaderVersion + " =")
 
 disclaimer = [
@@ -31,9 +31,20 @@ disclaimer = [
 # Display disclaimer
 libhearingdownloader.printDisclaimer(disclaimer)
 
-# Download update file list from updater API
-rawXmlData = requests.get("http://www.supportgn.com/resound/subsites/releasessdb.xml")
-data = xml.fromstring(rawXmlData.text)
+updaterRetries = libhearingdownloader.updaterRetries
+while updaterRetries > 0:
+    try:
+        # Download update file list from updater API
+        rawXmlData = requests.get("http://www.supportgn.com/resound/subsites/releasessdb.xml")
+        data = xml.fromstring(rawXmlData.text)
+        break
+    except:
+        pass
+
+    updaterRetries -= 1
+if (updaterRetries == 0):
+    print("Error: Update server could not be reached")
+    exit(1)
 
 if (libhearingdownloader.verboseDebug):
     print(rawXmlData.text)
@@ -52,7 +63,7 @@ if (libhearingdownloader.verboseDebug):
 
 # Select outputDir and targetFile
 outputDir = libhearingdownloader.selectOutputFolder()
-targetFile = availableFiles[libhearingdownloader.selectTargetVersion(availableFiles, prompt="software", headerSeperator = "\n")]
+targetFile = availableFiles[libhearingdownloader.selectTargetVersion(availableFiles, prompt="software", headerSeperator = '\n')]
 
 if (libhearingdownloader.verboseDebug):
     print(targetFile)
