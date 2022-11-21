@@ -21,7 +21,7 @@ import os
 # libhearingdownloader - A useful library for the downloader scripts
 ###
 
-downloaderVersion = "v1.7.0 - BETA2"
+downloaderVersion = "v1.7.0 - BETA3"
 updaterRetries = 3
 verboseDebug = False
 
@@ -131,15 +131,13 @@ def selectOutputFolder():
     
     return normalizePath(outputDir, False)
 
-print(selectOutputFolder())
-
 def downloadFile(url, saveLocation, downloadDescription):
     os.makedirs('/'.join(saveLocation.split("/")[:-1]), exist_ok=True) # Create path if it doesn't exist
     fileData = requests.get(url, stream=True) # Get file stream
 
     chunkSize = 2048
     
-    if (str(fileData.status_code)[0] != 2):
+    if (str(fileData.status_code)[0] != '2'):
         print("Error downloading file: [" + str(fileData.status_code) + "]")
         exit(1)
 
