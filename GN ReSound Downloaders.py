@@ -64,10 +64,10 @@ if (not ("http://" in targetURL or "https://" in targetURL)):
 
 # Create download folder
 #outputDir += '.'.join(targetFile[0].split('.')[:-1]) + "/"
-outputDir = outputDir + targetFile[1].split("/")[-1]
+outputLocation = outputDir + '.'.join(targetFile[1].split("/")[-1].split(".")[:-1]) + "/" + targetFile[1].split("/")[-1]
 print("\n\n")
 
 # Download file
-libhearingdownloader.downloadFile(targetURL, outputDir, "Downloading " + targetFile[0])
+libhearingdownloader.downloadFile(targetURL, outputLocation, "Downloading " + targetFile[0])
 
 print("\n\nDownload Complete!")
