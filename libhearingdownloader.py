@@ -109,6 +109,10 @@ def downloadFile(url, saveLocation, downloadDescription):
 
     chunkSize = 2048
     
+    if (str(fileData.status_code)[0] != 2):
+        print("Error downloading file: [" + str(fileData.status_code) + "]")
+        exit(1)
+
     fileSize = int(fileData.headers['content-length'])
     if (fileSize < chunkSize and fileSize > 0):
         chunkSize = fileSize
