@@ -6,14 +6,12 @@
 import requests
 import libhearingdownloader
 import xml.etree.ElementTree as xml
-utilityVersion = "v1.6.3"
-verboseDebug = False
 
 
 
 print("==================================================")
 print("=           Unitron TrueFit Downloader           =")
-print("="*(47-len(utilityVersion)) + " " + utilityVersion + " =")
+print("="*(47-len(libhearingdownloader.downloaderVersion)) + " " + libhearingdownloader.downloaderVersion + " =")
 
 disclaimer = [
     "DISCLAIMER",
@@ -26,7 +24,7 @@ disclaimer = [
     "All rights and credit go to their rightful owners. No copyright infringement intended.",
     "",
     "Bluebotlabz and this downloader are not affiliated with or endorsed by Unitron or Sonova AG",
-    "Depending on how this software is used, it may breach the EULA of the downloaded software",
+    "Depending on how this software is used, it may violate the EULA and/or Terms and Conditions of the downloaded software",
     "This is an UNOFFICIAL downloader and use of the software downloaded using it may be limited"
 ]
 
@@ -87,7 +85,7 @@ for child in data[0].find(xmlns + "ContentInfos"):
 print("Downloading " + str(len(filesToDownload.keys())) + " files\n")
 currentFile = 1
 for fileToDownload in filesToDownload.keys():
-    if (verboseDebug):
+    if (libhearingdownloader.verboseDebug):
         print(filesToDownload[fileToDownload])
 
     # Download file

@@ -5,14 +5,12 @@
 #############################################################
 import libhearingdownloader
 import xml.etree.ElementTree as xml
-utilityVersion = "v1.6.3"
-verboseDebug = False
 
 
 
 print("==================================================")
 print("=            Oticon Genie 1 Downloader           =")
-print("="*(47-len(utilityVersion)) + " " + utilityVersion + " =")
+print("="*(47-len(libhearingdownloader.downloaderVersion)) + " " + libhearingdownloader.downloaderVersion + " =")
 
 disclaimer = [
     "DISCLAIMER",
@@ -25,7 +23,7 @@ disclaimer = [
     "All rights and credit go to their rightful owners. No copyright infringement intended.",
     "",
     "Bluebotlabz and this downloader are not affiliated with or endorsed by Oticon or Demant A/S",
-    "Depending on how this software is used, it may breach the EULA of the downloaded software",
+    "Depending on how this software is used, it may violate the EULA and/or Terms and Conditions of the downloaded software",
     "This is an UNOFFICIAL downloader and use of the software downloaded using it may be limited"
 ]
 
@@ -48,7 +46,7 @@ print("\n\n")
 # Create download folder
 outputDir += validVersions[targetVersion][0] + "/"
 
-if(verboseDebug):
+if(libhearingdownloader.verboseDebug):
     print("V:" + str(targetVersion))
     print("T:" + validVersions[targetVersion])
 

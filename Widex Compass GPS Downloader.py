@@ -9,14 +9,12 @@ import zipfile
 import requests
 import libhearingdownloader
 import xml.etree.ElementTree as xml
-utilityVersion = "v1.6.3"
-verboseDebug = False
 
     
 
 print("==================================================")
 print("=          Widex Compass GPS Downloader          =")
-print("="*(47-len(utilityVersion)) + " " + utilityVersion + " =")
+print("="*(47-len(libhearingdownloader.downloaderVersion)) + " " + libhearingdownloader.downloaderVersion + " =")
 
 disclaimer = [
     "DISCLAIMER",
@@ -29,7 +27,7 @@ disclaimer = [
     "All rights and credit go to their rightful owners. No copyright infringement intended.",
     "",
     "Bluebotlabz and this downloader are not affiliated with or endorsed by WS Audiology A/S or Widex A/S",
-    "Depending on how this software is used, it may breach the EULA of the downloaded software",
+    "Depending on how this software is used, it may violate the EULA and/or Terms and Conditions of the downloaded software",
     "This is an UNOFFICIAL downloader and use of the software downloaded using it may be limited"
 ]
 
@@ -48,7 +46,7 @@ headers = {
 rawXmlData = requests.post("http://widexautomaticupdate.cloudapp.net/UpdateService.svc", headers=headers, data='<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><CheckForUpdates xmlns="http://tempuri.org/"><statusDescriptor xmlns:a="http://schemas.datacontract.org/2004/07/Widex.AutomaticUpdate.UpdateService" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><a:ClientId>00000000-0000-0000-0000-000000000000</a:ClientId><a:DistributorCode>70039</a:DistributorCode><a:ProductStatusDescriptors><a:ProductStatusDescriptor><a:PackageStatusDescriptors><a:PackageStatusDescriptor><a:PackageName>Code</a:PackageName><a:PackageVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:PackageVersion></a:PackageStatusDescriptor><a:PackageStatusDescriptor><a:PackageName>en-GB</a:PackageName><a:PackageVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:PackageVersion></a:PackageStatusDescriptor><a:PackageStatusDescriptor><a:PackageName>Compass</a:PackageName><a:PackageVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:PackageVersion></a:PackageStatusDescriptor></a:PackageStatusDescriptors><a:ProductIdentifier>CompassGPS</a:ProductIdentifier><a:ProductName>COMPASS GPS</a:ProductName><a:ProductVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:ProductVersion></a:ProductStatusDescriptor></a:ProductStatusDescriptors></statusDescriptor></CheckForUpdates></s:Body></s:Envelope>')
 data = xml.fromstring(rawXmlData.text)
 
-if (verboseDebug):
+if (libhearingdownloader.verboseDebug):
     print(rawXmlData.text)
 
 # Define XMLNS (the main one)
@@ -62,7 +60,7 @@ setupFileURL = data.find('{http://schemas.xmlsoap.org/soap/envelope/}' + "Body")
 
 filesToDownload.append( (setupFileURL.split("/")[-1], setupFileURL) )
 
-if (verboseDebug):
+if (libhearingdownloader.verboseDebug):
     print(filesToDownload)
 
 # Select outputDir and targetFile
@@ -77,7 +75,7 @@ print("\n\n")
 print("Downloading " + str(len(filesToDownload)) + " files\n")
 currentFile = 1
 for fileToDownload in filesToDownload:
-    if (verboseDebug):
+    if (libhearingdownloader.verboseDebug):
         print(fileToDownload)
 
     # Download file

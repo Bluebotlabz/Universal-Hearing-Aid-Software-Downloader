@@ -1,5 +1,6 @@
 from importlib_metadata import files
 from tqdm import tqdm
+import requests
 import wx
 import time
 import math
@@ -8,6 +9,9 @@ import os
 ###
 # libhearingdownloader - A useful library for the downloader scripts
 ###
+
+downloaderVersion = "v1.7.0 - BETA"
+verboseDebug = False
 
 def normalizePath(path, correctWindowsChars=True):
     if (path[-1] != "/"):
@@ -37,7 +41,7 @@ def printDisclaimer(disclaimer):
     print ("="*disclaimerWidth)
     input("Press enter to continue...")
 
-def selectTargetVersion(validVersions):
+def selectTargetVersion(validVersions, prompt = "version", headerSeperator=''):
     targetIndex = ''
     while not targetIndex:
         print("\n\n")
@@ -51,21 +55,21 @@ def selectTargetVersion(validVersions):
                 indexMap[selectionNumber] = listIndex
                 selectionNumber += 1 # Increment displayed index
             else:
-                print(version[0]) # Header
+                print(headerSeperator + version[0]) # Header
             listIndex += 1 # Increment list index
         
         try:
-            targetIndex = int(input("Please select a version: "))
+            targetIndex = int(input("Please select a " + prompt + ": "))
         except ValueError:
             targetIndex = -1
         
         if (targetIndex >= 0 and targetIndex <= selectionNumber):
-            if (input("You have selected version (" + validVersions[indexMap[targetIndex]][0] + ") are you sure you want to download it? [Y/n] ") == "n"):
+            if (input("You have selected " + prompt + " (" + validVersions[indexMap[targetIndex]][0] + ") are you sure you want to download it? [Y/n] ") == "n"):
                 targetIndex = ''
             else:
                 return indexMap[targetIndex]
         else:
-            print("The version you have selected is invalid.\nPlease try again.")
+            print("The " + prompt + " you have selected is invalid.\nPlease try again.")
             targetIndex = ''
 
 def selectOutputFolder():
