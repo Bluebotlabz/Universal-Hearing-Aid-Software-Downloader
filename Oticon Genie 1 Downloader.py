@@ -4,8 +4,6 @@
 #                                                           #
 #############################################################
 import libhearingdownloader
-import xml.etree.ElementTree as xml
-
 
 
 print("==================================================")

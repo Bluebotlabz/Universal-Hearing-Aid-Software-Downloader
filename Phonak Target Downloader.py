@@ -8,7 +8,6 @@ import libhearingdownloader
 import xml.etree.ElementTree as xml
 
 
-
 print("==================================================")
 print("=            Phonak Target Downloader            =")
 print("="*(47-len(libhearingdownloader.downloaderVersion)) + " " + libhearingdownloader.downloaderVersion + " =")

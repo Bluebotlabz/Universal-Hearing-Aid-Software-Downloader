@@ -9,7 +9,6 @@ import libhearingdownloader
 import xml.etree.ElementTree as xml
 
 
-
 print("==================================================")
 print("=               OasisNXT Downloader              =")
 print("="*(47-len(libhearingdownloader.downloaderVersion)) + " " + libhearingdownloader.downloaderVersion + " =")

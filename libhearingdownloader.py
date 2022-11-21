@@ -1,10 +1,10 @@
-from importlib_metadata import files
 from tqdm import tqdm
 import requests
 import wx
 import time
 import math
 import os
+
 
 ###
 # libhearingdownloader - A useful library for the downloader scripts

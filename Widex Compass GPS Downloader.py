@@ -10,7 +10,6 @@ import requests
 import libhearingdownloader
 import xml.etree.ElementTree as xml
 
-    
 
 print("==================================================")
 print("=          Widex Compass GPS Downloader          =")

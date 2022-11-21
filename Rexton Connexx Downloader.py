@@ -7,7 +7,6 @@ import requests
 import libhearingdownloader
 import xml.etree.ElementTree as xml
 
-    
 
 print("==================================================")
 print("=           Rexton Connexx Downloader            =")
