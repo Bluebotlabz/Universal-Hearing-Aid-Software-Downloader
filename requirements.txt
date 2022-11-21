@@ -1,4 +1,5 @@
+importlib-metadata
+attrdict3
 requests
 tqdm
-importlib-metadata
 wxPython
