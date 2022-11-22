@@ -23,7 +23,6 @@ echo.
 echo ==================================================
 echo =    Universal Hearing Aid Software Downloader   =
 echo ========================================= v1.7.0 =
-echo BETA5
 echo.
 echo.
 echo 1) Phonak Target Downloader
@@ -34,7 +33,7 @@ echo 5) Oticon Genie 2 Downloader
 echo 6) Unitron TrueFit Downloader
 echo 7) Widex Compass GPS Downloader
 echo 8) Bernafon OasisNXT Downloader
-echo 9) GN ReSound Downloaders
+echo 9) GN ReSound TrueFit & Aventa Downloaders
 
 echo.
 set /p SELECTION="Please choose a downloader to run (type the number you want): "

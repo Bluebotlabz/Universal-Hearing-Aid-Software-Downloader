@@ -67,6 +67,12 @@ NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by 
 - Fix Unitron Downloader Bug
 ### v1.6.3
 - Fix folder path selection bug
+### v1.7.0
+- Add folder selection GUI
+- Add GN Resound TrueFit Downloader
+- Add GN Resound Aventa Downloader
+- Add catch for server index download errors
+- Fix download location bugs in Bernafon Oasis & Oticon Genie 2 Downloaders
 
 
 ## Copyright & DMCA

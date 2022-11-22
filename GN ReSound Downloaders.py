@@ -18,6 +18,8 @@ disclaimer = [
     "I (Bluebotlabz), do not take any responsability for what you do using this software",
     "ReSound is a trademark of GN Hearing A/S and/or its affiliates (\"GN Group\")",
     "GN is a trademark of GN Store Nord A/S",
+    "aventa is a trademark of GN Hearing Care Corporation",
+    "TrueFit is a trademark of GN Hearing A/S",
     "GN Hearing A/S is a subsidiary of GN Store Nord A/S",
     "ReSound is a subsidiary of GN Hearing A/S",
     "All rights and credit go to their rightful owners. No copyright infringement intended.",
