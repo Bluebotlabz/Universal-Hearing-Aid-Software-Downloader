@@ -60,9 +60,30 @@ for child in data:
 if (libhearingdownloader.verboseDebug):
     print(availableFiles)
 
+
+simpleMenu = []
+smartFitFound = False
+aventaFound = False
+for fileData in availableFiles:
+    if (fileData[1] != '--'):
+        if ("Smart Fit" in fileData[0] and not smartFitFound):
+            smartFitFound = True
+            simpleMenu.append(fileData)
+        elif ("Aventa" in fileData[0] and not aventaFound):
+            aventaFound = True
+            simpleMenu.append(fileData)
+
+simpleMenu.append( ("Advanced Menu", 'Show all available software', '') )
+
 # Select outputDir and targetFile
 outputDir = libhearingdownloader.selectOutputFolder()
-targetFile = availableFiles[libhearingdownloader.selectTargetVersion(availableFiles, prompt="software", headerSeperator = '\n')]
+
+simpleSelection = libhearingdownloader.selectTargetVersion(simpleMenu, prompt="software", headerSeperator='\n')
+
+if (simpleSelection == len(simpleMenu)-1):
+    targetFile = availableFiles[libhearingdownloader.selectTargetVersion(availableFiles, prompt="software", headerSeperator = '\n')]
+else:
+    targetFile = simpleMenu[simpleSelection]
 
 if (libhearingdownloader.verboseDebug):
     print(targetFile)
