@@ -77,6 +77,8 @@ NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by 
 - Fix download location bugs in Bernafon Oasis & Oticon Genie 2 Downloaders
 ### v1.7.1
 - Fix typos
+### v1.7.2
+- Fix library bug
 
 
 ## Copyright & DMCA
