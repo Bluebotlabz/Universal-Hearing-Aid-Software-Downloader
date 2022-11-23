@@ -34,7 +34,7 @@ echo 5) Oticon Genie 2 Downloader
 echo 6) Unitron TrueFit Downloader
 echo 7) Widex Compass GPS Downloader
 echo 8) Bernafon OasisNXT Downloader
-echo 9) GN ReSound TrueFit & Aventa Downloaders
+echo 9) GN ReSound TrueFit and Aventa Downloaders
 
 echo.
 set /p SELECTION="Please choose a downloader to run (type the number you want): "
