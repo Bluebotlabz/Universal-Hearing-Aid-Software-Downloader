@@ -13,6 +13,7 @@ pause
 cls
 echo Installing requirements...
 pip3 install -r ./requirements.txt
+pip3 install -r ./requirements_uncertain.txt
 
 
 :Menu
@@ -22,7 +23,7 @@ echo.
 
 echo ==================================================
 echo =    Universal Hearing Aid Software Downloader   =
-echo ========================================= v1.7.1 =
+echo ========================================= v1.7.2 =
 echo.
 echo.
 echo 1) Phonak Target Downloader
