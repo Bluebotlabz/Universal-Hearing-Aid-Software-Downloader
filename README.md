@@ -79,6 +79,8 @@ NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by 
 - Fix typos
 ### v1.7.2
 - Fix library bug
+### v1.7.3
+- Fix bugs
 
 
 ## Copyright & DMCA
