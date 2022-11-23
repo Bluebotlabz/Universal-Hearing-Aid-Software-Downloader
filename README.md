@@ -15,6 +15,8 @@ The script currently supports:
 - Unitron TrueFit
 - Widex Compass GPS
 - Bernafon OasisNXT
+- GN ReSound Smart Fit
+- GN ReSound Aventa
 
 ## Where to get it
 The script is available here: https://github.com/Bluebotlabz/Hearing-Aid-Software-Downloaders/releases/latest
@@ -69,10 +71,12 @@ NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by 
 - Fix folder path selection bug
 ### v1.7.0
 - Add folder selection GUI
-- Add GN Resound TrueFit Downloader
+- Add GN Resound Smart Fit Downloader
 - Add GN Resound Aventa Downloader
 - Add catch for server index download errors
 - Fix download location bugs in Bernafon Oasis & Oticon Genie 2 Downloaders
+### v1.7.1
+- Fix typos
 
 
 ## Copyright & DMCA
