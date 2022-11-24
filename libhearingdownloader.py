@@ -21,7 +21,7 @@ import os
 # libhearingdownloader - A useful library for the downloader scripts
 ###
 
-downloaderVersion = "v1.7.3"
+downloaderVersion = "v1.7.4"
 updaterRetries = 3
 verboseDebug = False
 
@@ -53,7 +53,7 @@ def printDisclaimer(disclaimer):
     print ("="*disclaimerWidth)
     input("Press enter to continue...")
 
-def selectTargetVersion(validVersions, prompt = "version", headerSeperator=''):
+def selectTargetVersion(validVersions, prompt = "version", headerSeperator='', seperator='\t'):
     targetIndex = ''
     while not targetIndex:
         print("\n\n")
@@ -63,7 +63,7 @@ def selectTargetVersion(validVersions, prompt = "version", headerSeperator=''):
 
         for version in validVersions:
             if (version[1] != "--"):
-                print(str(selectionNumber) + ". " + version[0] + "\t" + version[1])
+                print(str(selectionNumber) + ". " + version[0] + seperator + version[1])
                 indexMap[selectionNumber] = listIndex
                 selectionNumber += 1 # Increment displayed index
             else:
@@ -85,7 +85,7 @@ def selectTargetVersion(validVersions, prompt = "version", headerSeperator=''):
             targetIndex = ''
 
 def selectOutputFolder():
-    if (guiType == "wx"):
+    if (guiType == "wxpython"):
         print("Please select a download location")
         time.sleep(2)
 
@@ -116,8 +116,7 @@ def selectOutputFolder():
             exit()
 
         tkRoot.destroy()
-
-    if (guiType == None):
+    elif (guiType == None):
         outputDir = ''
         while not outputDir:
             print("\n\n")

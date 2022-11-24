@@ -41,11 +41,39 @@ headers = {
     "Content-Type": "text/xml; charset=utf-8"
 }
 
+updateData = '<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><CheckForUpdates xmlns="http://tempuri.org/"><statusDescriptor xmlns:a="http://schemas.datacontract.org/2004/07/Widex.AutomaticUpdate.UpdateService" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><a:ClientId>00000000-0000-0000-0000-000000000000</a:ClientId><a:DistributorCode>70039</a:DistributorCode><a:ProductStatusDescriptors><a:ProductStatusDescriptor><a:PackageStatusDescriptors><a:PackageStatusDescriptor><a:PackageName>Code</a:PackageName><a:PackageVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:PackageVersion></a:PackageStatusDescriptor><a:PackageStatusDescriptor><a:PackageName>en-GB</a:PackageName><a:PackageVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:PackageVersion></a:PackageStatusDescriptor><a:PackageStatusDescriptor><a:PackageName>Compass</a:PackageName><a:PackageVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:PackageVersion></a:PackageStatusDescriptor></a:PackageStatusDescriptors><a:ProductIdentifier>CompassGPS</a:ProductIdentifier><a:ProductName>COMPASS GPS</a:ProductName><a:ProductVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:ProductVersion></a:ProductStatusDescriptor></a:ProductStatusDescriptors></statusDescriptor></CheckForUpdates></s:Body></s:Envelope>'
+
+availableLanguages = [
+    ("Chinese-CN", "zh-CN"),
+    ("Chinese-TW", "zh-TW"),
+    ("Czech-CZ", "cs-CZ"),
+    ("Danish-DK", "da-DK"),
+#    ("English-GB", "en-GB"), (already downloaded without this list)
+    ("English-US", "en-US"),
+    ("Finnish-FI", "fi-FI"),
+    ("French-FR", "fr-FR"),
+    ("German-DE", "de-DE"),
+    ("Hungarian-HU", "hu-HU"),
+    ("Italian-IT", "it-IT"),
+    ("Japanese-JP", "ja-JP"),
+    ("Korean-KR", "ko-KR"),
+    ("Norwegian-NO", "nn-NO"),
+    ("Polish-PL", "pl-PL"),
+    ("Portuguese-PT", "pt-PT"),
+    ("Russian-RU", "ru-RU"),
+    ("Spanish-ES", "es-ES"),
+    ("Swedish-SE", "sv-SE"),
+    ("Turkish-TR", "tr-TR")
+]
+
+## targetLanguage = libhearingdownloader.selectTargetVersion(availableLanguages, 'language', seperator='\t\t')
+## updateData = updateData.replace('en-GB', availableLanguages[targetLanguage][1])
+
 updaterRetries = libhearingdownloader.updaterRetries
 while updaterRetries > 0:
     try:
         # Download update file list from updater API
-        rawXmlData = requests.post("http://widexautomaticupdate.cloudapp.net/UpdateService.svc", headers=headers, data='<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><CheckForUpdates xmlns="http://tempuri.org/"><statusDescriptor xmlns:a="http://schemas.datacontract.org/2004/07/Widex.AutomaticUpdate.UpdateService" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><a:ClientId>00000000-0000-0000-0000-000000000000</a:ClientId><a:DistributorCode>70039</a:DistributorCode><a:ProductStatusDescriptors><a:ProductStatusDescriptor><a:PackageStatusDescriptors><a:PackageStatusDescriptor><a:PackageName>Code</a:PackageName><a:PackageVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:PackageVersion></a:PackageStatusDescriptor><a:PackageStatusDescriptor><a:PackageName>en-GB</a:PackageName><a:PackageVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:PackageVersion></a:PackageStatusDescriptor><a:PackageStatusDescriptor><a:PackageName>Compass</a:PackageName><a:PackageVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:PackageVersion></a:PackageStatusDescriptor></a:PackageStatusDescriptors><a:ProductIdentifier>CompassGPS</a:ProductIdentifier><a:ProductName>COMPASS GPS</a:ProductName><a:ProductVersion xmlns:b="http://schemas.datacontract.org/2004/07/System"><b:_Build>3079</b:_Build><b:_Major>4</b:_Major><b:_Minor>3</b:_Minor><b:_Revision>0</b:_Revision></a:ProductVersion></a:ProductStatusDescriptor></a:ProductStatusDescriptors></statusDescriptor></CheckForUpdates></s:Body></s:Envelope>')
+        rawXmlData = requests.post("http://widexautomaticupdate.cloudapp.net/UpdateService.svc", headers=headers, data=updateData)
         data = xml.fromstring(rawXmlData.text)
         break
     except:
@@ -65,6 +93,10 @@ filesToDownload = [] # List of available files
 
 for child in data.find('{http://schemas.xmlsoap.org/soap/envelope/}' + "Body").find('{http://tempuri.org/}' + "CheckForUpdatesResponse").find('{http://tempuri.org/}' + "CheckForUpdatesResult").find(packageXMLNS + "ProductTargetDescriptors").find(packageXMLNS + "ProductTargetDescriptor").find(packageXMLNS + "PackageTargetDescriptors"):
     filesToDownload.append( (child.find(packageXMLNS + "Filename").text, child.find(packageXMLNS + "DownloadUrl").text) )
+
+    if (child.find(packageXMLNS + "Filename").text == 'en-GB.msi'):
+        for availableLanguage in availableLanguages:
+            filesToDownload.append( (child.find(packageXMLNS + "Filename").text.replace('en-GB', availableLanguage[1]), child.find(packageXMLNS + "DownloadUrl").text.replace('en-GB', availableLanguage[1])) )
 
 setupFileURL = data.find('{http://schemas.xmlsoap.org/soap/envelope/}' + "Body").find('{http://tempuri.org/}' + "CheckForUpdatesResponse").find('{http://tempuri.org/}' + "CheckForUpdatesResult").find(packageXMLNS + "ProductTargetDescriptors").find(packageXMLNS + "ProductTargetDescriptor").find(packageXMLNS + "SetupFileDownloadUrl").text
 

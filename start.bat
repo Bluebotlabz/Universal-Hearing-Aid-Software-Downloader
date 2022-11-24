@@ -23,18 +23,18 @@ echo.
 
 echo ==================================================
 echo =    Universal Hearing Aid Software Downloader   =
-echo ========================================= v1.7.3 =
+echo ========================================= v1.7.4 =
 echo.
 echo.
 echo 1) Phonak Target Downloader
 echo 2) Signia Connexx Downloader
 echo 3) Rexton Connexx Downloader
-echo 4) Oticon Genie 1 Downloader
+echo 4) Oticon Genie Downloader
 echo 5) Oticon Genie 2 Downloader
 echo 6) Unitron TrueFit Downloader
 echo 7) Widex Compass GPS Downloader
 echo 8) Bernafon OasisNXT Downloader
-echo 9) GN ReSound TrueFit and Aventa Downloaders
+echo 9) GN ReSound Smart Fit and Aventa Downloaders
 
 echo.
 set /p SELECTION="Please choose a downloader to run (type the number you want): "
@@ -42,7 +42,7 @@ set /p SELECTION="Please choose a downloader to run (type the number you want): 
 IF %SELECTION%==1 ( python "./Phonak Target Downloader.py" & GOTO Finished )
 IF %SELECTION%==2 ( python "./Signia Connexx Downloader.py" & GOTO Finished )
 IF %SELECTION%==3 ( python "./Rexton Connexx Downloader.py" & GOTO Finished )
-IF %SELECTION%==4 ( python "./Oticon Genie 1 Downloader.py" & GOTO Finished )
+IF %SELECTION%==4 ( python "./Oticon Genie Downloader.py" & GOTO Finished )
 IF %SELECTION%==5 ( python "./Oticon Genie 2 Downloader.py" & GOTO Finished )
 IF %SELECTION%==6 ( python "./Unitron TrueFit.py" & GOTO Finished )
 IF %SELECTION%==7 ( python "./Widex Compass GPS Downloader.py" & GOTO Finished )

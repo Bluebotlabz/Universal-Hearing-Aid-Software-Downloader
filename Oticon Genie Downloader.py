@@ -7,7 +7,7 @@ import libhearingdownloader
 
 
 print("==================================================")
-print("=            Oticon Genie 1 Downloader           =")
+print("=             Oticon Genie Downloader            =")
 print("="*(47-len(libhearingdownloader.downloaderVersion)) + " " + libhearingdownloader.downloaderVersion + " =")
 
 disclaimer = [
@@ -32,8 +32,8 @@ libhearingdownloader.printDisclaimer(disclaimer)
 # Define list of valid versions and their download links (direct from CDN)
 validVersions = [
     ("Online Installers (require an internet connection to install)", "--"),
-    ("Genie 2017.1", "The last Genie 1 2017 Version", "https://installcdn.oticon.com/full/17.1/27.0.40.29/OTG214672OT_USB.zip"),
-    ("Genie Medical 2016.1", "The old Genie 1 2016 Version", "https://wdh02.azureedge.net/-/media/oticon-us/main/client-systems-support-and-remote-assistance/geniemedical2016.exe?la=en&rev=171A&hash=95AF6010585FD97B23A9FAB05FBAE761"),
+    ("Genie 2017.1", "The last Genie 2017 Version", "https://installcdn.oticon.com/full/17.1/27.0.40.29/OTG214672OT_USB.zip"),
+    ("Genie Medical 2016.1", "The old Genie Medical 2016 Version", "https://wdh02.azureedge.net/-/media/oticon-us/main/client-systems-support-and-remote-assistance/geniemedical2016.exe?la=en&rev=171A&hash=95AF6010585FD97B23A9FAB05FBAE761"),
 ]
 
 # Select outputDir and targetVersion

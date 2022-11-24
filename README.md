@@ -10,7 +10,7 @@ The script currently supports:
 - Phonak Target
 - Signia Connexx
 - Rexton Connexx
-- Oticon Genie 1
+- Oticon Genie
 - Oticon Genie 2
 - Unitron TrueFit
 - Widex Compass GPS
@@ -81,6 +81,9 @@ NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by 
 - Fix library bug
 ### v1.7.3
 - Fix bugs
+### v1.7.4
+- Fixed Widex Compass GPS Localisation Errors
+- Fixed Typos
 
 
 ## Copyright & DMCA
