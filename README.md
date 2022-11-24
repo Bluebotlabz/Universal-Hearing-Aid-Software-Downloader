@@ -23,14 +23,15 @@ The script is available here: https://github.com/Bluebotlabz/Hearing-Aid-Softwar
 
 Note: You need to have the latest version of Python installed for this to work
 ## How To Use it
-1. Download the script from here: https://github.com/Bluebotlabz/Hearing-Aid-Software-Downloaders/releases/latest<br/>
-   Click on the link and then click on the `Hearing-Aid-Software-Downloaders.zip` link to download it
+1. Download the script from here: https://github.com/Bluebotlabz/Universal-Hearing-Aid-Software-Downloader/releases/latest<br/>
+   Click on the link and then click on the `Universal-Hearing-Aid-Software-Downloader.zip` link to download it
 2. Extract the ZIP to a folder
 3. Go to: https://www.python.org/downloads/
 4. Click on the yellow `Download Python` button and run the installer
 5. Make sure you select `Add python.exe to PATH` in the start of the installer, and then click on `Install Now`
-6. Now go back to the folder where you extracted the scripts (not the ZIP file, the extracted folder)
-7. Double-click the `start.bat` file and follow the instructions on-screen
+6. **Reboot your computer**
+7. Now go back to the folder where you extracted the scripts (not the ZIP file, the extracted folder)
+8. Double-click the `start.bat` file and follow the instructions on-screen
 
 NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by running the `fixQuickedit.reg` file before running `start.bat`
 
