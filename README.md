@@ -87,6 +87,8 @@ NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by 
 - Fixed Typos
 ### v1.7.5
 - Add debug logging utility
+### v1.7.6
+- Fix debug logging utility bug
 
 
 ## Copyright & DMCA
