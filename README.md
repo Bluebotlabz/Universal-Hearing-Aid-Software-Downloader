@@ -85,6 +85,8 @@ NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by 
 ### v1.7.4
 - Fixed Widex Compass GPS Localisation Errors
 - Fixed Typos
+### v1.7.5
+- Add debug logging utility
 
 
 ## Copyright & DMCA
