@@ -1,4 +1,11 @@
 # Universal Hearing Aid Software Downloader
+![GitHub all releases](https://img.shields.io/github/downloads/Bluebotlabz/Universal-Hearing-Aid-Software-Downloader/total?style=for-the-badge)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/Bluebotlabz/Universal-Hearing-Aid-Software-Downloader?label=LATEST%20RELEASE&style=for-the-badge)
+<br/>
+![GitHub commits since tagged version](https://img.shields.io/github/commits-since/Bluebotlabz/Universal-Hearing-Aid-Software-Downloader/latest?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/Bluebotlabz/Universal-Hearing-Aid-Software-Downloader?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/Bluebotlabz/Universal-Hearing-Aid-Software-Downloader?style=for-the-badge)
+
 A collection of scripts which download hearing aid programming software directly from the company's servers
 
 ## What does it do?
