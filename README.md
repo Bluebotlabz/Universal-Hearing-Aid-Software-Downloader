@@ -1,4 +1,11 @@
-# [Universal Hearing Aid Software Downloader](https://github.com/Bluebotlabz/Universal-Hearing-Aid-Software-Downloader)
+# Universal Hearing Aid Software Downloader
+![GitHub all releases](https://img.shields.io/github/downloads/Bluebotlabz/Universal-Hearing-Aid-Software-Downloader/total?style=for-the-badge)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/Bluebotlabz/Universal-Hearing-Aid-Software-Downloader?label=LATEST%20RELEASE&style=for-the-badge)
+<br/>
+![GitHub commits since tagged version](https://img.shields.io/github/commits-since/Bluebotlabz/Universal-Hearing-Aid-Software-Downloader/latest?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/Bluebotlabz/Universal-Hearing-Aid-Software-Downloader?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/Bluebotlabz/Universal-Hearing-Aid-Software-Downloader?style=for-the-badge)
+
 A collection of scripts which download hearing aid programming software directly from the company's servers
 
 ## What does it do?
@@ -26,15 +33,14 @@ Note: You need to have the latest version of Python installed for this to work
 1. Download the script from here: https://github.com/Bluebotlabz/Universal-Hearing-Aid-Software-Downloader/releases/latest<br/>
    Click on the link and then click on the `Universal-Hearing-Aid-Software-Downloader.zip` link to download it
 2. Extract the ZIP to a folder
-3. If you are on Linux or MacOS you can skip straight to step 7
-4. Go to: https://www.python.org/downloads/
-5. Click on the yellow `Download Python` button and run the installer
-6. Make sure you select `Add python.exe to PATH` in the start of the installer, and then click on `Install Now`
-7. **Reboot your computer**
-8. Now go back to the folder where you extracted the scripts (not the ZIP file, the extracted folder)
-9. Double-click the `start-Windows.bat` file and follow the instructions on-screen, if you are on Linux/MacOS use the `start-Linux-macOS.sh` file, you may need to allow the script to run on MacOS
+3. Go to: https://www.python.org/downloads/
+4. Click on the yellow `Download Python` button and run the installer
+5. Make sure you select `Add python.exe to PATH` in the start of the installer, and then click on `Install Now`
+6. **Reboot your computer**
+7. Now go back to the folder where you extracted the scripts (not the ZIP file, the extracted folder)
+8. Double-click the `start.bat` file and follow the instructions on-screen
 
-NOTE: On Windows, If the script looks like it has frozen, then try disabling `quickEdit` by running the `fixQuickedit.reg` file before running `start.bat`
+NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by running the `fixQuickedit.reg` file before running `start.bat`
 
 ## Credits
 [@pvc](https://forum.hearingtracker.com/u/tenkan) - Assisting with testing of the script and finding software links
