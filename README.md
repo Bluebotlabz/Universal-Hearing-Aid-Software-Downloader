@@ -1,9 +1,9 @@
-# Universal Hearing Aid Software Downloader
+# [Universal Hearing Aid Software Downloader](https://github.com/Bluebotlabz/Universal-Hearing-Aid-Software-Downloader)
 A collection of scripts which download hearing aid programming software directly from the company's servers
 
 ## What does it do?
 This repository contains scripts which can download hearing aid programming software (such as Phonak Target) directly from the software's servers, avoiding the need to distribute copyrighted files<br/>
-(I am not a lawyer, this is not legal advice, this is my merely opinion)
+(I am not a lawyer, this is not legal advice, this is merely my opinion)
 
 ## Currently Supported Software
 The script currently supports:
@@ -26,14 +26,15 @@ Note: You need to have the latest version of Python installed for this to work
 1. Download the script from here: https://github.com/Bluebotlabz/Universal-Hearing-Aid-Software-Downloader/releases/latest<br/>
    Click on the link and then click on the `Universal-Hearing-Aid-Software-Downloader.zip` link to download it
 2. Extract the ZIP to a folder
-3. Go to: https://www.python.org/downloads/
-4. Click on the yellow `Download Python` button and run the installer
-5. Make sure you select `Add python.exe to PATH` in the start of the installer, and then click on `Install Now`
-6. **Reboot your computer**
-7. Now go back to the folder where you extracted the scripts (not the ZIP file, the extracted folder)
-8. Double-click the `start.bat` file and follow the instructions on-screen
+3. If you are on Linux or MacOS you can skip straight to step 7
+4. Go to: https://www.python.org/downloads/
+5. Click on the yellow `Download Python` button and run the installer
+6. Make sure you select `Add python.exe to PATH` in the start of the installer, and then click on `Install Now`
+7. **Reboot your computer**
+8. Now go back to the folder where you extracted the scripts (not the ZIP file, the extracted folder)
+9. Double-click the `start-Windows.bat` file and follow the instructions on-screen, if you are on Linux/MacOS use the `start-Linux-macOS.sh` file, you may need to allow the script to run on MacOS
 
-NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by running the `fixQuickedit.reg` file before running `start.bat`
+NOTE: On Windows, If the script looks like it has frozen, then try disabling `quickEdit` by running the `fixQuickedit.reg` file before running `start.bat`
 
 ## Credits
 [@pvc](https://forum.hearingtracker.com/u/tenkan) - Assisting with testing of the script and finding software links
@@ -89,12 +90,25 @@ NOTE: If the script looks like it has frozen, then try disabling `quickEdit` by 
 - Add debug logging utility
 ### v1.7.6
 - Fix debug logging utility bug
+### v1.8.0
+- Add native Linux and MacOS Support
 
 
 ## Copyright & DMCA
 Since these scripts download data which is publically available online directly from software servers, it does not directly distribute any copyrighted content<br>
 If you are a company and are still unhappy with the way one of these scripts works, please open an issue describing how exactly the script violates your software's copyright and it will be modified immediately<br>
-(I am not a lawyer, this is not legal advice, this is my merely opinion)
+(I am not a lawyer, this is not legal advice, this is merely my opinion)
+
+## WARANTY/SUPPORT
+THE SOFTWARE PROVIDED BY THIS SCRIPT IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,<br/>
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.<br/>
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,<br/>
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br/>
+<br/>
+THIS SCRIPT UNOFFICIAL AND IS NOT IN ANY AFFILIATED WITH THE AUTHORS OR COPYRIGHT HOLDERS OF ANY SOFTWARE DOWNLOADED<br/>
+VIA THE USE OF THIS SCRIPT. THEY HAVE NO REQUIREMENT TO PROVIDE ANY SUPPORT OR WARANTY TO ANY SOFTWARE DOWNLOADED<br/>
+VIA THE USE OF THIS SCRIPT. THE AUTHORS AND COPYRIGHT HOLDERS OF ANY SOFTWARE DOWNLOADED VIA THE USE OF THIS SCRIPT<br/>
+RESERVE THE RIGHT TO TERMINATE ANY USAGE OF SOFTWARE DOWNLOADED VIA THIS SCRIPT<br/>
 
 ## DISCLAIMER
 I (Bluebotlabz), do not take any responsability for what you do using this software<br/>
@@ -103,4 +117,4 @@ All rights and credit go to their rightful owners. No copyright infringement int
 Bluebotlabz and this downloader are not affiliated with or endorsed by any of the companies mentioned in this repository<br/>
 Depending on how this software is used, it may violate the EULA and/or Terms and Conditions of the downloaded software<br/>
 This is an UNOFFICIAL downloader and use of the software downloaded using it may be limited<br/>
-(I am not a lawyer, this is not legal advice, this is my merely opinion)
+(I am not a lawyer, this is not legal advice, this is merely my opinion)

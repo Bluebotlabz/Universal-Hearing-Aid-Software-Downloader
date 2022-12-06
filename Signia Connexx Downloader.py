@@ -12,6 +12,7 @@ print("==================================================")
 print("=           Signia Connexx Downloader            =")
 print("="*(47-len(libhearingdownloader.downloaderVersion)) + " " + libhearingdownloader.downloaderVersion + " =")
 
+libhearingdownloader.printWaranty()
 disclaimer = [
     "DISCLAIMER",
     "",
@@ -69,7 +70,7 @@ if (libhearingdownloader.verboseDebug):
 
 # Select outputDir and targetFile
 outputDir = libhearingdownloader.selectOutputFolder()
-targetFile = availableFiles[libhearingdownloader.selectTargetVersion(availableFiles)]
+targetFile = availableFiles[libhearingdownloader.selectFromList(availableFiles)]
 
 # Create download folder
 outputDir += '.'.join(targetFile[0].split('.')[:-1]) + "/"

@@ -12,6 +12,7 @@ print("==================================================")
 print("=            Phonak Target Downloader            =")
 print("="*(47-len(libhearingdownloader.downloaderVersion)) + " " + libhearingdownloader.downloaderVersion + " =")
 
+libhearingdownloader.printWaranty()
 disclaimer = [
     "DISCLAIMER",
     "",
@@ -63,7 +64,7 @@ validVersions = [
 
 # Select outputDir and targetVersion
 outputDir = libhearingdownloader.selectOutputFolder()
-targetVersion = validVersions[libhearingdownloader.selectTargetVersion(validVersions)][0]
+targetVersion = validVersions[libhearingdownloader.selectFromList(validVersions)][0]
 print("\n\n")
 
 

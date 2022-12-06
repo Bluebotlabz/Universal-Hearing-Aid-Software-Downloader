@@ -15,6 +15,7 @@ print("==================================================")
 print("=          Widex Compass GPS Downloader          =")
 print("="*(47-len(libhearingdownloader.downloaderVersion)) + " " + libhearingdownloader.downloaderVersion + " =")
 
+libhearingdownloader.printWaranty()
 disclaimer = [
     "DISCLAIMER",
     "",
@@ -66,7 +67,7 @@ availableLanguages = [
     ("Turkish-TR", "tr-TR")
 ]
 
-## targetLanguage = libhearingdownloader.selectTargetVersion(availableLanguages, 'language', seperator='\t\t')
+## targetLanguage = libhearingdownloader.selectFromList(availableLanguages, 'language', seperator='\t\t')
 ## updateData = updateData.replace('en-GB', availableLanguages[targetLanguage][1])
 
 updaterRetries = libhearingdownloader.updaterRetries

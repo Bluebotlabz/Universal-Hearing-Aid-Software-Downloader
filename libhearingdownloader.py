@@ -21,7 +21,7 @@ import os
 # libhearingdownloader - A useful library for the downloader scripts
 ###
 
-downloaderVersion = "v1.7.4"
+downloaderVersion = "v1.8.0"
 updaterRetries = 3
 verboseDebug = False
 
@@ -34,8 +34,25 @@ def normalizePath(path, correctWindowsChars=True):
     else:
         return path
 
-def printDisclaimer(disclaimer):
-    disclaimerWidth = 150
+def printWaranty():
+    warantyDisclaimer = [
+        "This isn't the usual blah-blah, please read it:",
+        ""
+        "THE SOFTWARE PROVIDED BY THIS SCRIPT (AND THE SCRIPT ITSELF) IS PROVIDED \"AS IS\"",
+        "WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,",
+        "INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.",
+        "IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,",
+        "WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH",
+        "THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
+        "",
+        "THIS SCRIPT UNOFFICIAL AND IS NOT IN ANY AFFILIATED WITH THE AUTHORS OR COPYRIGHT HOLDERS OF ANY SOFTWARE DOWNLOADED",
+        "VIA THE USE OF THIS SCRIPT. THEY HAVE NO REQUIREMENT TO PROVIDE ANY SUPPORT OR WARANTY TO ANY SOFTWARE DOWNLOADED",
+        "VIA THE USE OF THIS SCRIPT. THE AUTHORS AND COPYRIGHT HOLDERS OF ANY SOFTWARE DOWNLOADED VIA THE USE OF THIS SCRIPT",
+        "RESERVE THE RIGHT TO TERMINATE ANY USAGE OF SOFTWARE DOWNLOADED VIA THIS SCRIPT"
+    ]
+    printDisclaimer(warantyDisclaimer)
+
+def printDisclaimer(disclaimer, disclaimerWidth = 150):
     print("\n\n")
     print ("="*disclaimerWidth)
     for line in disclaimer:
@@ -53,21 +70,29 @@ def printDisclaimer(disclaimer):
     print ("="*disclaimerWidth)
     input("Press enter to continue...")
 
-def selectTargetVersion(validVersions, prompt = "version", headerSeperator='', seperator='\t'):
+def selectFromList(selectionList, prompt = "version", headerSeperator='', seperator='\t', numberSeperator='.', confirmationCheck=True):
     targetIndex = ''
+
+    # Selection format in list is:
+    # ("displayed text", "description")
+    # If description is "--", the selection is treated as a header and does not have a number
     while not targetIndex:
         print("\n\n")
-        indexMap = {} # Map version numbers to list index
+        indexMap = {} # Map displayed selection numbers with their selections via a dict
         listIndex = 0 # The current index in the list
-        selectionNumber = 0 # The current DISPLAYED index in the list
+        selectionNumber = 0 # The current DISPLAYED index in the list (for headers and stuff)
 
-        for version in validVersions:
-            if (version[1] != "--"):
-                print(str(selectionNumber) + ". " + version[0] + seperator + version[1])
+        for selection in selectionList:
+            if (selection[1] != "--"):
+                strSelectionNumber = str(selectionNumber)
+                while len(strSelectionNumber) < len(str(len(selectionList))):
+                    strSelectionNumber = " " + strSelectionNumber
+
+                print(str(strSelectionNumber) + numberSeperator + " " + selection[0] + seperator + selection[1])
                 indexMap[selectionNumber] = listIndex
                 selectionNumber += 1 # Increment displayed index
             else:
-                print(headerSeperator + version[0]) # Header
+                print(headerSeperator + selection[0]) # Header
             listIndex += 1 # Increment list index
         
         try:
@@ -76,7 +101,10 @@ def selectTargetVersion(validVersions, prompt = "version", headerSeperator='', s
             targetIndex = -1
         
         if (targetIndex >= 0 and targetIndex <= selectionNumber):
-            if (input("You have selected " + prompt + " (" + validVersions[indexMap[targetIndex]][0] + ") are you sure you want to download it? [Y/n] ") == "n"):
+            if (not confirmationCheck):
+                return indexMap[targetIndex]
+
+            if (input("You have selected " + prompt + " (" + selectionList[indexMap[targetIndex]][0] + ") are you sure you want to download it? [Y/n] ") == "n"):
                 targetIndex = ''
             else:
                 return indexMap[targetIndex]

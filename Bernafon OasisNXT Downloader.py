@@ -82,7 +82,7 @@ if (libhearingdownloader.verboseDebug):
 
 # Select outputDir and targetVersion
 outputDir = libhearingdownloader.selectOutputFolder()
-targetVersion = libhearingdownloader.selectTargetVersion(validVersions)
+targetVersion = libhearingdownloader.selectFromList(validVersions)
 print("\n\n")
 
 

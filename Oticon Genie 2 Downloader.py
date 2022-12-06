@@ -13,6 +13,7 @@ print("==================================================")
 print("=            Oticon Genie 2 Downloader           =")
 print("="*(47-len(libhearingdownloader.downloaderVersion)) + " " + libhearingdownloader.downloaderVersion + " =")
 
+libhearingdownloader.printWaranty()
 disclaimer = [
     "DISCLAIMER",
     "",
@@ -77,7 +78,7 @@ validVersions = [
 
 # Select outputDir and targetVersion
 outputDir = libhearingdownloader.selectOutputFolder()
-targetVersion = libhearingdownloader.selectTargetVersion(validVersions, headerSeperator='\n')
+targetVersion = libhearingdownloader.selectFromList(validVersions, headerSeperator='\n')
 print("\n\n")
 
 
