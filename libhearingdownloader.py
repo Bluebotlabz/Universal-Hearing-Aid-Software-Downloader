@@ -75,6 +75,8 @@ def selectFromList(selectionList, prompt = "version", headerSeperator='', sepera
 
     # Selection format in list is:
     # ("displayed text", "description")
+    # Use list of tuples over dict just bc
+    # Also, you can add more elements to tuple and function ignores them, allowing extra data storage
     # If description is "--", the selection is treated as a header and does not have a number
     while not targetIndex:
         print("\n\n")
