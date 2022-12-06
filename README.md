@@ -23,7 +23,14 @@ The script currently supports:
 - Widex Compass GPS
 - Bernafon OasisNXT
 - GN ReSound Smart Fit
-- GN ReSound Aventa
+- GN Resound Aventa
+- GN ReSound Pro-Counsel
+- Interton Fitting
+- Interton Appraise
+- Interton CompuFit
+- Beltone Solus Max
+- Beltone Solus
+- Beltone SelectaFit
 
 ## Where to get it
 The script is available here: https://github.com/Bluebotlabz/Hearing-Aid-Software-Downloaders/releases/latest

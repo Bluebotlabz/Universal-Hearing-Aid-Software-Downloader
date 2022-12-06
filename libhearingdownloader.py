@@ -100,7 +100,7 @@ def selectFromList(selectionList, prompt = "version", headerSeperator='', sepera
         except ValueError:
             targetIndex = -1
         
-        if (targetIndex >= 0 and targetIndex <= selectionNumber):
+        if (targetIndex >= 0 and targetIndex < selectionNumber):
             if (not confirmationCheck):
                 return indexMap[targetIndex]
 
